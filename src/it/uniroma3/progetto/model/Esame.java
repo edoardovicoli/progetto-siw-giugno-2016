@@ -8,7 +8,7 @@ public class Esame {
 	private Date dataPrenotazioneEsame;
 	private String dataSvolgimentoEsame;
 	private String medico; // deve diventare un oggetto (?)
-	private TipologiaEsame tipologiaEsame; // deve diventare un oggetto
+	private TipologiaEsame tipologiaEsame;
 	private String pazienteEsame; // deve diventare un oggetto
 	
 	public Esame() {}

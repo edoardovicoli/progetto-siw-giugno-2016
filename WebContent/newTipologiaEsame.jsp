@@ -5,8 +5,6 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Sezione Amministrazione</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Nuova Tipologia Esame</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -19,12 +17,16 @@
 	</head>
 	<body>
 		<f:view>
-			<div align="center">
-				<h1>Area Riservata Direttore Laboratorio</h1>
-			</div>
-			<div align="center">
-				<h2><a href="newTipologiaEsame.jsp">Inserisci Tipologia Esame</a></h2>
-			</div>
+			<h:form>
+				<div align="center">
+					Nome: <h:inputText value="#{tipologiaEsameController.nome}" required="true"
+					requiredMessage="Nome obbligatorio" id="nome"/>
+				</div>
+				<p> </p>
+				<div align="center">
+					<h:commandButton value="Submit" action="#{tipologiaEsameController.createTipologiaEsame}" styleClass="btn btn-lg btn-success"/>
+				</div>
+			</h:form>
 		</f:view>
 	</body>
 </html>

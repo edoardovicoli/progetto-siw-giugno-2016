@@ -1,11 +1,15 @@
 package it.uniroma3.progetto.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import it.uniroma3.progetto.model.Esame;
+import it.uniroma3.progetto.model.EsameFacade;
 import it.uniroma3.progetto.model.PrerequisitoEsame;
 import it.uniroma3.progetto.model.TipologiaEsame;
 import it.uniroma3.progetto.model.TipologiaEsameFacade;
@@ -14,27 +18,59 @@ import it.uniroma3.progetto.model.TipologiaEsameFacade;
 public class TipologiaEsameController {
 	private String nome;
 	private TipologiaEsame tipologiaEsame;
-	private List<TipologiaEsame> tipologieEsame;
+	private Esame esame;
+	private String nomeEsame;
 	private List<Esame> esami;
-	private List<PrerequisitoEsame> prerequisitiEsame;
+	private EsameController esameController;
+	
+//	public TipologiaEsameController() {
+//		this.nome = "*";
+//		this.esami = new ArrayList<Esame>();
+//		this.esame = new Esame("vuoto");
+//	}
 	
 	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
+	@EJB
+	private EsameFacade esameFacade;
 
 	public String createTipologiaEsame() {
-		this.tipologiaEsame = tipologiaEsameFacade.createTipologiaEsame(this.nome);
-		System.out.println("Nome: " + this.nome);
-		System.out.println(this.tipologiaEsame.toString());
-		
+		this.tipologiaEsame = tipologiaEsameFacade.findByName(this.nome);
+		if (this.tipologiaEsame==null) {
+			this.tipologiaEsame = new TipologiaEsame(this.nome);
+			
+			//FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("tipologiaEsame", this.tipologiaEsame);
+			//this.esame=this.createEsame();
+			this.esame = new Esame(this.nomeEsame);
+			this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
+			this.tipologiaEsame = tipologiaEsameFacade.createTipologiaEsame(this.tipologiaEsame);
+		} else {
+			this.esame = new Esame(this.nomeEsame);
+			this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
+			this.tipologiaEsameFacade.updateTipologiaEsame(tipologiaEsame);
+		}	
+			
 		// riazzero campi
-		this.nome = "";
+		this.nomeEsame = "";
 		return "newTipologiaEsame";
 	}
 	
-	public String listTipologieEsame() {
-		this.tipologieEsame = tipologiaEsameFacade.getAllTipologieEsame();
-		return "esami";
+	public void addEsame(Esame esame) {
+		this.esami.add(esame);
 	}
+	
+	public Esame createEsame() {
+		//this.tipologiaEsame= (TipologiaEsame)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("tipologiaEsame");
+
+		this.esame=esameFacade.createEsame(this.nomeEsame);
+		this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
+		return this.esame;
+	}
+ 	
+//	public String listTipologieEsame() {
+//		this.tipologieEsame = tipologiaEsameFacade.getAllTipologieEsame();
+//		return "esami";
+//	}
 	
 //	public String findEsame() {
 //		this.esame = esameFacade.getEsame(this.id);
@@ -57,13 +93,45 @@ public class TipologiaEsameController {
 		this.tipologiaEsame = tipologiaEsame;
 	}
 
-	public List<TipologiaEsame> getTipologieEsame() {
-		this.tipologieEsame = tipologiaEsameFacade.getAllTipologieEsame();
-		return tipologieEsame;
+//	public List<TipologiaEsame> getTipologieEsame() {
+//		this.tipologieEsame = tipologiaEsameFacade.getAllTipologieEsame();
+//		return tipologieEsame;
+//	}
+//
+//	public void setTipologieEsami(List<TipologiaEsame> tipologieEsame) {
+//		this.tipologieEsame = tipologieEsame;
+//	}
+
+	public Esame getEsame() {
+		return esame;
 	}
 
-	public void setTipologieEsami(List<TipologiaEsame> tipologieEsame) {
-		this.tipologieEsame = tipologieEsame;
+	public void setEsame(Esame esame) {
+		this.esame = esame;
 	}
 
+	public String getNomeEsame() {
+		return nomeEsame;
+	}
+
+	public void setNomeEsame(String nomeEsame) {
+		this.nomeEsame = nomeEsame;
+	}
+
+	public TipologiaEsameFacade getTipologiaEsameFacade() {
+		return tipologiaEsameFacade;
+	}
+
+	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
+		this.tipologiaEsameFacade = tipologiaEsameFacade;
+	}
+
+	public List<Esame> getEsami() {
+		return esami;
+	}
+
+	public void setEsami(List<Esame> esami) {
+		this.esami = esami;
+	}
+	
 }

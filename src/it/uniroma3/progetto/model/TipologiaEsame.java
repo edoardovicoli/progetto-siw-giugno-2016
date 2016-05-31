@@ -1,12 +1,17 @@
 package it.uniroma3.progetto.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,13 +27,14 @@ public class TipologiaEsame {
 	@OneToMany
 	private List<PrerequisitoEsame> prerequisitiEsame;
 	
-	@OneToMany(mappedBy = "tipologiaEsame")
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	private List<Esame> esami;
 	
 	public TipologiaEsame() {}
 	
 	public TipologiaEsame(String nome) {
 		this.nome = nome;
+		this.esami = new ArrayList<Esame>();
 	}
 
 	public Long getId() {

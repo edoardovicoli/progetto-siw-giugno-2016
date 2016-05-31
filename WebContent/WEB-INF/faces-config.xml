@@ -14,5 +14,15 @@
 		<managed-bean-class>it.uniroma3.progetto.controller.TipologiaEsameController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>esameController</managed-bean-name>
+		<managed-bean-class>it.uniroma3.progetto.controller.EsameController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pazienteController</managed-bean-name>
+		<managed-bean-class>it.uniroma3.progetto.controller.PazienteController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

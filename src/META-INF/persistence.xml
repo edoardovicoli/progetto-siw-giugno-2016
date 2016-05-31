@@ -9,6 +9,7 @@
         <class>it.uniroma3.progetto.model.TipologiaEsame</class>
         <class>it.uniroma3.progetto.model.Esame</class>
         <class>it.uniroma3.progetto.model.PrerequisitoEsame</class>
+        <class>it.uniroma3.progetto.model.Paziente</class>
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>

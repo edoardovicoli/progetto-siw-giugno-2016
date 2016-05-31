@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 import it.uniroma3.progetto.model.TipologiaEsame;
@@ -19,8 +20,8 @@ public class TipologiaEsameFacade {
 	@PersistenceContext(unitName = "labAnalisi-unit")
 	private EntityManager em;
 	
-	public TipologiaEsame createTipologiaEsame(String nome) {
-		TipologiaEsame tipologiaEsame = new TipologiaEsame(nome);
+	public TipologiaEsame createTipologiaEsame(TipologiaEsame tipologiaEsame) {
+		//TipologiaEsame tipologiaEsame = new TipologiaEsame(nome);
 		if (em==null) {
 			System.out.println("EM NULL");
 		}
@@ -34,9 +35,63 @@ public class TipologiaEsameFacade {
 		return tipologiaEsame;
 	}
 	
+//	public TipologiaEsame createTipologiaEsame(String nomeTipologia, String nomeEsame) {
+//		TipologiaEsame tipologiaEsame = new TipologiaEsame(nomeTipologia);
+//		Esame esame = new Esame(nomeEsame);
+//		tipologiaEsame.getEsami().add(esame);
+//		if (em==null) {
+//			System.out.println("EM NULL CON ESAME");
+//		}
+//		try {
+//			em.persist(tipologiaEsame);
+//			System.out.println("TipologiaEsameFacade: TIPOLOGIAESAME CREATA CON ESAME");
+//		} catch(Exception e) {
+//			System.out.println("ERRORE CREATETIPOLOGIAESAME CON ESAME");
+//			System.out.println(e);
+	
+//		}
+//		
+//		return tipologiaEsame;
+//	}
+	
+	public List<Esame> addEsame(TipologiaEsame tipologiaEsame, Esame esame) {
+		List<Esame> esami= tipologiaEsame.getEsami();
+		System.out.println("LISTA PRESA");
+		if (esami==null) {
+			System.out.println("LISTA NULL");
+		} else {
+			System.out.println("ELEMENTI LISTA: " + esami.size());
+		}
+		esami.add(esame);
+		System.out.println("ESAME AGGIUNTO ALLA LISTA PRESA");
+		tipologiaEsame.setEsami(esami);
+		System.out.println("LISTA SETTATA");
+		//this.updateTipologiaEsame(tipologiaEsame);
+		//System.out.println("TIPOLOGIA AGGIORNATA");
+		return esami;	
+	}
+	
 	public TipologiaEsame getTipologiaEsame(Long id) {
 		TipologiaEsame tipologiaEsame = em.find(TipologiaEsame.class, id);
 		return tipologiaEsame;
+	}
+	
+//	public TipologiaEsame getTipologiaEsame(String nome) {
+//		TipologiaEsame tipologiaEsame = em.find(TipologiaEsame.class, nome);
+//		return tipologiaEsame;
+//	}
+	
+	public TipologiaEsame findByName(String nomeTipologia) {
+		Query queryTipologiaByName = em.createQuery("SELECT OBJECT(t) FROM TipologiaEsame AS t WHERE t.nome=?1");
+		queryTipologiaByName.setParameter(1, nomeTipologia);
+		List<TipologiaEsame> tipologieEsame = queryTipologiaByName.getResultList();
+		if (tipologieEsame.isEmpty()) {
+			return null;
+		} else {
+			System.out.println("TIPOLOGIA ESAME ESISTE NELLA LISTA");
+			TipologiaEsame te = (TipologiaEsame)tipologieEsame.get(0);
+			return te;
+		}
 	}
 	
 	public List<TipologiaEsame> getAllTipologieEsame() {

@@ -6,10 +6,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Sezione Amministrazione</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Nuova Tipologia Esame</title>
+
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -18,12 +17,62 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class = "container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">ClinicaACME</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="main.jsp">Home</a></li>
+						<li><a href="about.jsp">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Servizi<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="tipologieEsame.jsp">Esami offerti</a></li>
+								<li><a href="#">Another Action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One More Separated link</a></li>
+							</ul>
+						</li>
+						<li><a href="loginAdmin.jsp">Area Riservata</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	
 		<f:view>
 			<div align="center">
-				<h1>Area Riservata Direttore Laboratorio</h1>
+				<h2>Laboratorio Analisi Cliniche</h2>
 			</div>
 			<div align="center">
+				<h3>Area Riservata Direttore Laboratorio</h3>
+			</div>
+			<div align="center" class="panel panel-primary">
+            	<div align="center" class="panel-heading">
+              		<div>
+              			<h3 class="panel-title">Panel title</h3>
+              		</div>
+            	</div>
+            	<div align="center" class="panel-body">
+              		Username: <h:outputText value="#{loginController.username}" id="username"/>
+            	</div>
+          	</div>
+			<div align="center">
 				<h2><a href="newTipologiaEsame.jsp">Inserisci Tipologia Esame</a></h2>
+			</div>
+			<div align="center">
+				<h2><a href="newPaziente.jsp">Inserisci nuovo Paziente</a></h2>
 			</div>
 		</f:view>
 	</body>

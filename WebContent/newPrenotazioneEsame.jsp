@@ -55,19 +55,9 @@
 				<h1>Laboratorio Analisi Cliniche - Prenotazione Esame</h1>
 			</div>
 			<h:form>
-				<div align="center">
-					Nome Esame: <h:inputText value="#{esameController.nome}" required="true"
-					requiredMessage="Nome Esame obbligatorio!" id="nomeEsame"/>
-				</div>
-				
-				<div align="center">
-					Nome Esame: <h:inputText value="#{esameController.}" required="true"
-					requiredMessage="Nome Esame obbligatorio" id="nomeEsame"/>
-				</div>
-				
-				<div align="center">
-					<h:commandButton value="Submit" action="#{tipologiaEsameController.createTipologiaEsame}" styleClass="btn btn-lg btn-success"/>
-				</div>
+				<h:selectManyCheckbox value="#{prenotazioneEsameController.tipologieEsamePrenotate}">
+					<f:selectItems value="#{prenotazioneEsameController.tipologieEsameSelezionabili}"/>
+				</h:selectManyCheckbox>
 			</h:form>
 		</f:view>
 	</body>

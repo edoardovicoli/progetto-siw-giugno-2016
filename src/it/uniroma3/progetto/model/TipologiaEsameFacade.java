@@ -87,10 +87,11 @@ public class TipologiaEsameFacade {
 		}
 	}
 	
-	public List<TipologiaEsame> getAllTipologieEsame() {
-		CriteriaQuery<TipologiaEsame> cq = em.getCriteriaBuilder().createQuery(TipologiaEsame.class);
-		cq.select(cq.from(TipologiaEsame.class));
-		List<TipologiaEsame> tipologieEsame = em.createQuery(cq).getResultList();
+	public List<TipologiaEsame> findAll() {
+		Query q = em.createQuery("SELECT t FROM TipologiaEsame t");
+		System.out.println("*********PRENDOTIP**********");
+		List<TipologiaEsame> tipologieEsame = q.getResultList();
+		System.out.println("DIMENSIONE LISTA *****" + tipologieEsame.size());
 		return tipologieEsame;
 	}
 

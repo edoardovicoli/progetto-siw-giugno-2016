@@ -29,12 +29,14 @@ public class TipologiaEsameController {
 	private String valorePrerequisito;
 	private List<PrerequisitoEsame> prerequisitiEsame;
 	
-	public TipologiaEsameController() {}
+	private List<String> stringhe = new ArrayList<String>();
 	
 	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
 	@EJB
 	private EsameFacade esameFacade;
+	
+	public TipologiaEsameController() {}
 
 	public String createTipologiaEsame() {
 		this.tipologiaEsame = tipologiaEsameFacade.findByName(this.nome);
@@ -216,6 +218,21 @@ public class TipologiaEsameController {
 
 	public void setPrerequisitiEsame(List<PrerequisitoEsame> prerequisitiEsame) {
 		this.prerequisitiEsame = prerequisitiEsame;
-	}	
+	}
+
+	public List<String> getStringhe() {
+		return stringhe;
+	}
+
+	public void setStringhe(List<String> stringhe) {
+		this.stringhe = stringhe;
+	}
+	
+	public String register() {
+		for(String s:this.stringhe) {
+			System.out.println(s);
+		}
+		return "newPrenotazioneEsame";
+	}
 	
 }

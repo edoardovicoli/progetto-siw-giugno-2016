@@ -36,7 +36,7 @@ public class TipologiaEsameFacade {
 	}
 	
 	public List<Esame> addEsame(TipologiaEsame tipologiaEsame, Esame esame) {
-		List<Esame> esami= tipologiaEsame.getEsami();
+		List<Esame> esami = tipologiaEsame.getEsami();
 		System.out.println("LISTA PRESA");
 		if (esami==null) {
 			System.out.println("LISTA NULL");
@@ -47,9 +47,26 @@ public class TipologiaEsameFacade {
 		System.out.println("ESAME AGGIUNTO ALLA LISTA PRESA");
 		tipologiaEsame.setEsami(esami);
 		System.out.println("LISTA SETTATA");
-		this.updateTipologiaEsame(tipologiaEsame);
-		System.out.println("TIPOLOGIA AGGIORNATA");
+		//this.updateTipologiaEsame(tipologiaEsame);
+		//System.out.println("TIPOLOGIA AGGIORNATA");
 		return esami;	
+	}
+	
+	public List<PrerequisitoEsame> addPrerequisito(TipologiaEsame tipologiaEsame, PrerequisitoEsame prerequisitoEsame) {
+		List<PrerequisitoEsame> prerequisitiEsame = tipologiaEsame.getPrerequisitiEsame();
+		System.out.println("LISTA PREREQ PRESA");
+		if (prerequisitiEsame==null) {
+			System.out.println("LISTA PREREQ NULL");
+		} else {
+			System.out.println("ELEMENTI LISTA PREREQ: " + prerequisitiEsame.size());
+		}
+		prerequisitiEsame.add(prerequisitoEsame);
+		System.out.println("PREREQ AGGIUNTO ALLA LISTA PRESA");
+		tipologiaEsame.setPrerequisitiEsame(prerequisitiEsame);
+		System.out.println("LISTA PREREQ SETTATA");
+		//this.updateTipologiaEsame(tipologiaEsame);
+		//System.out.println("TIPOLOGIA PREREQ AGGIORNATA");
+		return prerequisitiEsame;
 	}
 	
 	public TipologiaEsame getTipologiaEsame(Long id) {

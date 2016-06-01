@@ -58,7 +58,19 @@
 			<h:form>
 				<div align="center">
 					Nome Tipologia Esame: <h:inputText value="#{tipologiaEsameController.nome}" required="true"
-					requiredMessage="Nome Tipologia Esame obbligatorio" id="nomeTipologia"/>
+					requiredMessage="Nome Tipologia Esame obbligatorio!" id="nomeTipologia"/>
+				</div>
+				<div align="center">
+					Codice Tipologia: <h:inputText value="#{tipologiaEsameController.codice}" required="true"
+					requiredMessage="Codice Tipologia Esame obbligatorio!" id="codiceTipologia"/>
+				</div>
+				<div align="center">
+					Costo Tipologia: <h:inputText value="#{tipologiaEsameController.costo}" required="true"
+					requiredMessage="Costo Tipologia Esame obbligatorio!" id="costoTipologia"/>
+				</div>
+				<div align="center">
+					Descrizione Tipologia: <h:inputText value="#{tipologiaEsameController.descrizione}" required="true"
+					requiredMessage="Descrizione Tipologia Esame obbligatoria!" id="descrizioneTipologia"/>
 				</div>
 				
 				<div align="center">
@@ -67,19 +79,59 @@
 				</div>
 				
 				<div align="center">
+					Nome Prerequisito: <h:inputText value="#{tipologiaEsameController.nomePrerequisito}" required="true"
+					requiredMessage="Nome Prerequisito obbligatorio" id="nomePrerequisitoEsame"/>
+				</div>
+				
+				<div align="center">
+					Valore Prerequisito: <h:inputText value="#{tipologiaEsameController.valorePrerequisito}" required="true"
+					requiredMessage="Valore Prerequisito obbligatorio" id="valorePrerequisitoEsame"/>
+				</div>
+				
+				<div align="center">
 					<h:commandButton value="Submit" action="#{tipologiaEsameController.createTipologiaEsame}" styleClass="btn btn-lg btn-success"/>
 				</div>
 			</h:form>
 			<hr>
+			
 			<div align="center">
 				<h:dataTable value="#{tipologiaEsameController.esami}" var="esame" styleClass="esameTable" headerClass="esameTableHeader" rowClasses="esameTableOddRow,esameTableEvenRow" border="1">
    					<h:column>    				
-      					<f:facet name="header"><h:outputText value="Tipologia"/></f:facet>    				
+      					<f:facet name="header"><h:outputText value="CodTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.codice}"/>
+   					</h:column>
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="NomeTipologia"/></f:facet>    				
       					<h:outputText value="#{tipologiaEsameController.nome}"/>
+   					</h:column>
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="CostoTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.costo}"/>
    					</h:column>
    					<h:column>
       					<f:facet name="header"><h:outputText value="Esame"/></f:facet>
       					<h:outputText value="#{esame.nome}"/>
+   					</h:column>
+   				</h:dataTable>
+			</div>
+			<p></p>
+			<div align="center">
+				<h:dataTable value="#{tipologiaEsameController.prerequisitiEsame}" var="prerequisitoEsame" styleClass="prerequisitoTable" headerClass="prerequisitoTableHeader" rowClasses="prerequisitoTableOddRow,prerequisitoTableEvenRow" border="1">
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="CodTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.codice}"/>
+   					</h:column>
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="NomeTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.nome}"/>
+   					</h:column>
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="CostoTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.costo}"/>
+   					</h:column>
+   					<h:column>
+      					<f:facet name="header"><h:outputText value="Prerequisito"/></f:facet>
+      					<h:outputText value="#{prerequisitoEsame.nome}"/>
    					</h:column>
    				</h:dataTable>
 			</div>

@@ -24,7 +24,16 @@ public class TipologiaEsame {
 	@Column(nullable = false)
 	private String nome;
 	
-	@OneToMany
+	@Column(nullable = false)
+	private String codice;
+	
+	@Column(nullable = false)
+	private String costo;
+	
+	@Column(nullable = false)
+	private String descrizione;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	private List<PrerequisitoEsame> prerequisitiEsame;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
@@ -32,9 +41,13 @@ public class TipologiaEsame {
 	
 	public TipologiaEsame() {}
 	
-	public TipologiaEsame(String nome) {
+	public TipologiaEsame(String nome, String codice, String costo, String descrizione) {
 		this.nome = nome;
+		this.codice = codice;
+		this.costo = costo;
+		this.descrizione = descrizione;
 		this.esami = new ArrayList<Esame>();
+		this.prerequisitiEsame = new ArrayList<PrerequisitoEsame>();
 	}
 
 	public Long getId() {
@@ -67,6 +80,30 @@ public class TipologiaEsame {
 
 	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
+	}
+
+	public String getCodice() {
+		return codice;
+	}
+
+	public void setCodice(String codice) {
+		this.codice = codice;
+	}
+
+	public String getCosto() {
+		return costo;
+	}
+
+	public void setCosto(String costo) {
+		this.costo = costo;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	@Override

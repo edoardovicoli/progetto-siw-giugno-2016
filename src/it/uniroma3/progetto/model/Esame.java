@@ -43,6 +43,14 @@ public class Esame {
 		this.nome = nome;
 	}
 
+	public TipologiaEsame getTipologiaEsame() {
+		return tipologiaEsame;
+	}
+
+	public void setTipologiaEsame(TipologiaEsame tipologiaEsame) {
+		this.tipologiaEsame = tipologiaEsame;
+	}
+
 	@Override
 	public String toString() {
 		return "Esame [id=" + id + ", nome=" + nome + "]";

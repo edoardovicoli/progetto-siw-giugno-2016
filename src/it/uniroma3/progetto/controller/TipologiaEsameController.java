@@ -17,10 +17,17 @@ import it.uniroma3.progetto.model.TipologiaEsameFacade;
 @ManagedBean
 public class TipologiaEsameController {
 	private String nome;
+	private String codice;
+	private String costo;
+	private String descrizione;
 	private TipologiaEsame tipologiaEsame;
 	private Esame esame;
 	private String nomeEsame;
 	private List<Esame> esami;
+	private PrerequisitoEsame prerequisitoEsame;
+	private String nomePrerequisito;
+	private String valorePrerequisito;
+	private List<PrerequisitoEsame> prerequisitiEsame;
 	
 	public TipologiaEsameController() {}
 	
@@ -32,13 +39,44 @@ public class TipologiaEsameController {
 	public String createTipologiaEsame() {
 		this.tipologiaEsame = tipologiaEsameFacade.findByName(this.nome);
 		if (this.tipologiaEsame==null) {
-			this.tipologiaEsame = new TipologiaEsame(this.nome);
+			this.tipologiaEsame = new TipologiaEsame(this.nome, this.codice, this.costo, this.descrizione);
+			
 			this.esame = new Esame(this.nomeEsame);
 			this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
+			
+			this.prerequisitoEsame = new PrerequisitoEsame(this.nomePrerequisito, this.valorePrerequisito);
+			this.prerequisitiEsame = tipologiaEsameFacade.addPrerequisito(this.tipologiaEsame, this.prerequisitoEsame);
+			
 			this.tipologiaEsame = tipologiaEsameFacade.createTipologiaEsame(this.tipologiaEsame);
 		} else {
-			this.esame = new Esame(this.nomeEsame);
-			this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
+			List<Esame> esami = this.tipologiaEsame.getEsami();
+			boolean esameTrovato = false;
+			
+			for(Esame e:esami) {
+				if (e.getNome().equals(this.nomeEsame)) {
+					esameTrovato = true;
+					break;
+				}
+			}
+			if (!esameTrovato) {
+				this.esame = new Esame(this.nomeEsame);
+				this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
+			}
+			//this.tipologiaEsameFacade.updateTipologiaEsame(tipologiaEsame);
+			
+			List<PrerequisitoEsame> prerequisiti = this.tipologiaEsame.getPrerequisitiEsame();
+			boolean prerequisitoTrovato = false;
+			
+			for (PrerequisitoEsame pe:prerequisiti) {
+				if (pe.getNome().equals(this.nomePrerequisito) && pe.getValore().equals(this.valorePrerequisito)) {
+					prerequisitoTrovato = true;
+					break;
+				}
+			}
+			if (!prerequisitoTrovato) {
+				this.prerequisitoEsame = new PrerequisitoEsame(this.nomePrerequisito, this.valorePrerequisito);
+				this.prerequisitiEsame = tipologiaEsameFacade.addPrerequisito(this.tipologiaEsame, this.prerequisitoEsame);
+			}
 			this.tipologiaEsameFacade.updateTipologiaEsame(tipologiaEsame);
 		}	
 			
@@ -123,5 +161,61 @@ public class TipologiaEsameController {
 	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
 	}
+
+	public String getCodice() {
+		return codice;
+	}
+
+	public void setCodice(String codice) {
+		this.codice = codice;
+	}
+
+	public String getCosto() {
+		return costo;
+	}
+
+	public void setCosto(String costo) {
+		this.costo = costo;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	public PrerequisitoEsame getPrerequisitoEsame() {
+		return prerequisitoEsame;
+	}
+
+	public void setPrerequisitoEsame(PrerequisitoEsame prerequisitoEsame) {
+		this.prerequisitoEsame = prerequisitoEsame;
+	}
+
+	public String getValorePrerequisito() {
+		return valorePrerequisito;
+	}
+
+	public void setValorePrerequisito(String valorePrerequisito) {
+		this.valorePrerequisito = valorePrerequisito;
+	}
+
+	public String getNomePrerequisito() {
+		return nomePrerequisito;
+	}
+
+	public void setNomePrerequisito(String nomePrerequisito) {
+		this.nomePrerequisito = nomePrerequisito;
+	}
+
+	public List<PrerequisitoEsame> getPrerequisitiEsame() {
+		return prerequisitiEsame;
+	}
+
+	public void setPrerequisitiEsame(List<PrerequisitoEsame> prerequisitiEsame) {
+		this.prerequisitiEsame = prerequisitiEsame;
+	}	
 	
 }

@@ -5,8 +5,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Sezione Amministrazione</title>
-
+		<title>Prenotazione Esame</title>
+		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
@@ -50,33 +50,25 @@
 				</div>
 			</div>
 		</div>
-	
 		<f:view>
 			<div align="center">
-				<h2>Laboratorio Analisi Cliniche</h2>
+				<h1>Laboratorio Analisi Cliniche - Prenotazione Esame</h1>
 			</div>
-			<div align="center">
-				<h3>Area Riservata Direttore Laboratorio</h3>
-			</div>
-			<div align="center" class="panel panel-primary">
-            	<div align="center" class="panel-heading">
-              		<div>
-              			<h3 class="panel-title">Panel title</h3>
-              		</div>
-            	</div>
-            	<div align="center" class="panel-body">
-              		Username: <h:outputText value="#{loginController.username}" id="username"/>
-            	</div>
-          	</div>
-			<div align="center">
-				<h3><a href="newTipologiaEsame.jsp">Inserisci Tipologia Esame</a></h3>
-			</div>
-			<div align="center">
-				<h3><a href="newPaziente.jsp">Inserisci nuovo Paziente</a></h3>
-			</div>
-			<div align="center">
-				<h3><a href="newPrenotazioneEsame.jsp">Prenota nuovo Esame</a></h3>
-			</div>
+			<h:form>
+				<div align="center">
+					Nome Esame: <h:inputText value="#{esameController.nome}" required="true"
+					requiredMessage="Nome Esame obbligatorio!" id="nomeEsame"/>
+				</div>
+				
+				<div align="center">
+					Nome Esame: <h:inputText value="#{esameController.}" required="true"
+					requiredMessage="Nome Esame obbligatorio" id="nomeEsame"/>
+				</div>
+				
+				<div align="center">
+					<h:commandButton value="Submit" action="#{tipologiaEsameController.createTipologiaEsame}" styleClass="btn btn-lg btn-success"/>
+				</div>
+			</h:form>
 		</f:view>
 	</body>
 </html>

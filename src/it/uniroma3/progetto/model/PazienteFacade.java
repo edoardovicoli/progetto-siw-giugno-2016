@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 /**
@@ -30,6 +31,19 @@ public class PazienteFacade {
 			System.out.println(e);
 		}
 		return paziente;
+	}
+	
+	public Paziente findByCF(String cf) {
+		Query queryCF = em.createQuery("SELECT OBJECT(p) FROM Paziente AS p WHERE p.cf=?1");
+		queryCF.setParameter(1, cf);
+		List<Paziente> pazienti = queryCF.getResultList();
+		if (pazienti.isEmpty()) {
+			return null;
+		} else {
+			System.out.println("PAZIENTE ESISTE NELLA LISTA");
+			Paziente p = (Paziente)pazienti.get(0);
+			return p;
+		}
 	}
 	
 	public Paziente getPaziente(Long id) {

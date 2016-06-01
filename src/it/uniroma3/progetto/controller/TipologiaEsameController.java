@@ -21,13 +21,8 @@ public class TipologiaEsameController {
 	private Esame esame;
 	private String nomeEsame;
 	private List<Esame> esami;
-	private EsameController esameController;
 	
-//	public TipologiaEsameController() {
-//		this.nome = "*";
-//		this.esami = new ArrayList<Esame>();
-//		this.esame = new Esame("vuoto");
-//	}
+	public TipologiaEsameController() {}
 	
 	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
@@ -38,9 +33,6 @@ public class TipologiaEsameController {
 		this.tipologiaEsame = tipologiaEsameFacade.findByName(this.nome);
 		if (this.tipologiaEsame==null) {
 			this.tipologiaEsame = new TipologiaEsame(this.nome);
-			
-			//FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("tipologiaEsame", this.tipologiaEsame);
-			//this.esame=this.createEsame();
 			this.esame = new Esame(this.nomeEsame);
 			this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
 			this.tipologiaEsame = tipologiaEsameFacade.createTipologiaEsame(this.tipologiaEsame);
@@ -60,8 +52,6 @@ public class TipologiaEsameController {
 	}
 	
 	public Esame createEsame() {
-		//this.tipologiaEsame= (TipologiaEsame)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("tipologiaEsame");
-
 		this.esame=esameFacade.createEsame(this.nomeEsame);
 		this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
 		return this.esame;

@@ -35,25 +35,6 @@ public class TipologiaEsameFacade {
 		return tipologiaEsame;
 	}
 	
-//	public TipologiaEsame createTipologiaEsame(String nomeTipologia, String nomeEsame) {
-//		TipologiaEsame tipologiaEsame = new TipologiaEsame(nomeTipologia);
-//		Esame esame = new Esame(nomeEsame);
-//		tipologiaEsame.getEsami().add(esame);
-//		if (em==null) {
-//			System.out.println("EM NULL CON ESAME");
-//		}
-//		try {
-//			em.persist(tipologiaEsame);
-//			System.out.println("TipologiaEsameFacade: TIPOLOGIAESAME CREATA CON ESAME");
-//		} catch(Exception e) {
-//			System.out.println("ERRORE CREATETIPOLOGIAESAME CON ESAME");
-//			System.out.println(e);
-	
-//		}
-//		
-//		return tipologiaEsame;
-//	}
-	
 	public List<Esame> addEsame(TipologiaEsame tipologiaEsame, Esame esame) {
 		List<Esame> esami= tipologiaEsame.getEsami();
 		System.out.println("LISTA PRESA");
@@ -66,8 +47,8 @@ public class TipologiaEsameFacade {
 		System.out.println("ESAME AGGIUNTO ALLA LISTA PRESA");
 		tipologiaEsame.setEsami(esami);
 		System.out.println("LISTA SETTATA");
-		//this.updateTipologiaEsame(tipologiaEsame);
-		//System.out.println("TIPOLOGIA AGGIORNATA");
+		this.updateTipologiaEsame(tipologiaEsame);
+		System.out.println("TIPOLOGIA AGGIORNATA");
 		return esami;	
 	}
 	
@@ -75,11 +56,6 @@ public class TipologiaEsameFacade {
 		TipologiaEsame tipologiaEsame = em.find(TipologiaEsame.class, id);
 		return tipologiaEsame;
 	}
-	
-//	public TipologiaEsame getTipologiaEsame(String nome) {
-//		TipologiaEsame tipologiaEsame = em.find(TipologiaEsame.class, nome);
-//		return tipologiaEsame;
-//	}
 	
 	public TipologiaEsame findByName(String nomeTipologia) {
 		Query queryTipologiaByName = em.createQuery("SELECT OBJECT(t) FROM TipologiaEsame AS t WHERE t.nome=?1");

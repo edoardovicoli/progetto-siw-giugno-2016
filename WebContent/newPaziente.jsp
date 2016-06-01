@@ -100,6 +100,12 @@
 				<div align="center">
 					<h:commandButton value="Invia" action="#{pazienteController.createPaziente}" styleClass="btn btn-lg btn-primary btn-block"/>
 				</div>
+				<div align="center">
+					<h:outputText value="#{pazienteController.messaggioSuccesso}"></h:outputText>
+				</div>
+				<div align="center">
+					<h:outputText value="#{pazienteController.messaggioFallimento}"></h:outputText>
+				</div>
 				</h:form>
 			</f:view>
 		</body>

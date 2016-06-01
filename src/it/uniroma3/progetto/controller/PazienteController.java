@@ -5,8 +5,10 @@ import java.util.Date;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 
+import it.uniroma3.progetto.model.Esame;
 import it.uniroma3.progetto.model.Paziente;
 import it.uniroma3.progetto.model.PazienteFacade;
+import it.uniroma3.progetto.model.TipologiaEsame;
 
 @ManagedBean
 public class PazienteController {
@@ -19,21 +21,25 @@ public class PazienteController {
 	private String email;
 	private String telefono;
 	private Paziente paziente;
-	
-	public PazienteController() {
-		System.out.println("COSTRUTTORE PAZIENTECONTROLLER");
-	}
+	private String messaggioSuccesso;
+	private String messaggioFallimento;
+	public PazienteController() {}
 	
 	@EJB
 	private PazienteFacade pazienteFacade;
 	
 	public String createPaziente() {
-		System.out.println("INIZIO CREATE PAZIENTE");
-		Paziente p = new Paziente(this.nome, this.cognome, this.indirizzo, this.dataNascita, this.cf, this.email, this.telefono, this.sesso);
-		System.out.println("NUOVO PAZIENTE");
-		this.paziente = pazienteFacade.createPaziente(p);
-		System.out.println("PERSIST PAZIENTE");
-		
+		this.paziente = pazienteFacade.findByCF(this.cf);
+		if (this.paziente == null) {
+			System.out.println("INIZIO CREATE PAZIENTE");
+			Paziente p = new Paziente(this.nome, this.cognome, this.indirizzo, this.dataNascita, this.cf, this.email, this.telefono, this.sesso);
+			System.out.println("NUOVO PAZIENTE");
+			this.paziente = pazienteFacade.createPaziente(p);
+			this.messaggioSuccesso = "Paziente inserito con successo!";
+		} else {
+			this.messaggioSuccesso = null;
+			this.messaggioFallimento = "Il paziente è già presente nell'anagrafica.";
+		}
 		// riazzero i campi
 		this.nome = "";
 		this.cognome = "";
@@ -43,7 +49,6 @@ public class PazienteController {
 		this.email = "";
 		this.telefono = "";
 		this.sesso = "";
-		
 		return "newPaziente";	
 	}
 	
@@ -101,7 +106,21 @@ public class PazienteController {
 	public void setPaziente(Paziente paziente) {
 		this.paziente = paziente;
 	}
-	
-	
+
+	public String getMessaggioSuccesso() {
+		return messaggioSuccesso;
+	}
+
+	public void setMessaggioSuccesso(String messaggioSuccesso) {
+		this.messaggioSuccesso = messaggioSuccesso;
+	}
+
+	public String getMessaggioFallimento() {
+		return messaggioFallimento;
+	}
+
+	public void setMessaggioFallimento(String messaggioFallimento) {
+		this.messaggioFallimento = messaggioFallimento;
+	}
 
 }

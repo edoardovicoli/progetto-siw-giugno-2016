@@ -28,6 +28,10 @@ public class TipologiaEsameController {
 	private String nomePrerequisito;
 	private String valorePrerequisito;
 	private List<PrerequisitoEsame> prerequisitiEsame;
+	private List<TipologiaEsame> tipologieEsame;
+	
+	private String nomeTipologiaEsameDettaglio;
+	private List<Esame> esamiPerDettaglio;
 	
 	private List<String> stringhe = new ArrayList<String>();
 	
@@ -50,6 +54,10 @@ public class TipologiaEsameController {
 			this.prerequisitiEsame = tipologiaEsameFacade.addPrerequisito(this.tipologiaEsame, this.prerequisitoEsame);
 			
 			this.tipologiaEsame = tipologiaEsameFacade.createTipologiaEsame(this.tipologiaEsame);
+			
+			// per tipologieEsame.jsp
+			
+			this.tipologieEsame = this.tipologiaEsameFacade.findAll();
 		} else {
 			List<Esame> esami = this.tipologiaEsame.getEsami();
 			boolean esameTrovato = false;
@@ -85,6 +93,16 @@ public class TipologiaEsameController {
 		// riazzero campi
 		this.nomeEsame = "";
 		return "newTipologiaEsame";
+	}
+	
+	public String tipologiaEsameDettaglio(String nomeDettaglio) {
+		this.nomeTipologiaEsameDettaglio = nomeDettaglio;
+		System.out.println(this.nomeTipologiaEsameDettaglio);
+		this.esamiPerDettaglio = this.tipologiaEsameFacade.findByNomeTipologia(nomeTipologiaEsameDettaglio);
+		for(Esame e:esamiPerDettaglio) {
+			System.out.println(e.getNome());
+		}
+		return "tipologiaEsameDetail";
 	}
 	
 	public void addEsame(Esame esame) {
@@ -228,6 +246,30 @@ public class TipologiaEsameController {
 		this.stringhe = stringhe;
 	}
 	
+	public List<TipologiaEsame> getTipologieEsame() {
+		return tipologieEsame;
+	}
+
+	public void setTipologieEsame(List<TipologiaEsame> tipologieEsame) {
+		this.tipologieEsame = tipologieEsame;
+	}
+
+	public String getNomeTipologiaEsameDettaglio() {
+		return nomeTipologiaEsameDettaglio;
+	}
+
+	public void setNomeTipologiaEsameDettaglio(String nomeTipologiaEsameDettaglio) {
+		this.nomeTipologiaEsameDettaglio = nomeTipologiaEsameDettaglio;
+	}
+	
+	public List<Esame> getEsamiPerDettaglio() {
+		return esamiPerDettaglio;
+	}
+
+	public void setEsamiPerDettaglio(List<Esame> esamiPerDettaglio) {
+		this.esamiPerDettaglio = esamiPerDettaglio;
+	}
+
 	public String register() {
 		for(String s:this.stringhe) {
 			System.out.println(s);

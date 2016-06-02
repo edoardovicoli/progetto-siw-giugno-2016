@@ -36,7 +36,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Servizi<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="tipologieEsame.jsp">Esami offerti</a></li>
+								<li><a href="tipologieEsame.jsp">Tipologie Esame offerte</a></li>
 								<li><a href="#">Another Action</a></li>
 								<li><a href="#">Something else here</a></li>
 								<li class="divider"></li>

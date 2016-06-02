@@ -94,6 +94,19 @@ public class TipologiaEsameFacade {
 		System.out.println("DIMENSIONE LISTA *****" + tipologieEsame.size());
 		return tipologieEsame;
 	}
+	
+	public List<Esame> findByNomeTipologia(String nomeTipologia) {
+		Query q = em.createQuery("SELECT OBJECT(e) FROM TipologiaEsame AS e WHERE e.nome=?1");
+		q.setParameter(1, nomeTipologia);
+		List<TipologiaEsame> tipologieEsame = q.getResultList();
+		if (tipologieEsame.isEmpty()) {
+			return null;
+		} else {
+			TipologiaEsame te = (TipologiaEsame)tipologieEsame.get(0);
+			List<Esame> le = te.getEsami();
+			return le;
+		}
+	}
 
 	public void updateTipologiaEsame(TipologiaEsame tipologiaEsame) {
 		em.merge(tipologiaEsame);

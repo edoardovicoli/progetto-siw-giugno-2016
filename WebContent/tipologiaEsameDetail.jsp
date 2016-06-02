@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Prenotazione Esame</title>
-		
+		<title>Insert title here</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
@@ -36,7 +36,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Servizi<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="tipologieEsame.jsp">Tipologie Esame offerti</a></li>
+								<li><a href="tipologieEsame.jsp">Esami offerti</a></li>
 								<li><a href="#">Another Action</a></li>
 								<li><a href="#">Something else here</a></li>
 								<li class="divider"></li>
@@ -50,14 +50,17 @@
 				</div>
 			</div>
 		</div>
+	<body>
 		<f:view>
-			<div align="center">
-				<h1>Laboratorio Analisi Cliniche - Prenotazione Esame</h1>
-			</div>
+			<div align="center"><h2>Dettagli per tipologia: <h:outputText value="#{tipologiaEsameController.nomeTipologiaEsameDettaglio}"/></h2></div>
 			<h:form>
-				<h:selectManyCheckbox value="#{prenotazioneEsameController.tipologieEsamePrenotate}">
-					<f:selectItems value="#{prenotazioneEsameController.tipologieEsameSelezionabili}"/>
-				</h:selectManyCheckbox>
+				<div align="center">
+					<c:forEach var="esamePerDettaglio" items="#{tipologiaEsameController.esamiPerDettaglio}">
+						<div align="center">
+							<h:outputText value="#{esamePerDettaglio.nome}"/>
+						</div>
+					</c:forEach>
+				</div>
 			</h:form>
 		</f:view>
 	</body>

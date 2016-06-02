@@ -50,7 +50,7 @@ public class Esame {
 	public void setTipologiaEsame(TipologiaEsame tipologiaEsame) {
 		this.tipologiaEsame = tipologiaEsame;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Esame [id=" + id + ", nome=" + nome + "]";

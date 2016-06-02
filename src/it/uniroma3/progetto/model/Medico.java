@@ -14,6 +14,9 @@ public class Medico {
 	private Long id;
 	
 	@Column(nullable = false)
+	private String codice;
+	
+	@Column(nullable = false)
 	private String nome;
 	
 	@Column(nullable = false)
@@ -24,8 +27,9 @@ public class Medico {
 	
 	public Medico() {}
 
-	public Medico(String nome, String cognome, String specializzazione) {
+	public Medico(String codice, String nome, String cognome, String specializzazione) {
 		super();
+		this.codice = codice;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.specializzazione = specializzazione;
@@ -37,6 +41,14 @@ public class Medico {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getCodice() {
+		return codice;
+	}
+
+	public void setCodice(String codice) {
+		this.codice = codice;
 	}
 
 	public String getNome() {
@@ -65,7 +77,8 @@ public class Medico {
 
 	@Override
 	public String toString() {
-		return "Medico [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", specializzazione=" + specializzazione
-				+ "]";
+		return "Medico [id=" + id + ", codice=" + codice + ", nome=" + nome + ", cognome=" + cognome
+				+ ", specializzazione=" + specializzazione + "]";
 	}
+
 }

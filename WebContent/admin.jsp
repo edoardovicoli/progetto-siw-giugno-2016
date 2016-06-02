@@ -77,6 +77,9 @@
 			<div align="center">
 				<h3><a href="newPrenotazioneEsame.jsp">Prenota nuovo Esame</a></h3>
 			</div>
+			<div align="center">
+				<h3><a href="newMedico.jsp">Inserisci nuovo Medico</a></h3>
+			</div>
 		</f:view>
 	</body>
 </html>

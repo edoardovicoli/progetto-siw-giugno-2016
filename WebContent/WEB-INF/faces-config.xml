@@ -29,5 +29,10 @@
 		<managed-bean-class>it.uniroma3.progetto.controller.PrenotazioneEsameController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>medicoController</managed-bean-name>
+		<managed-bean-class>it.uniroma3.progetto.controller.MedicoController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

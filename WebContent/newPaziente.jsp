@@ -7,7 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Nuovo Paziente</title>
 	
-			<!-- Latest compiled and minified CSS -->
+		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
 		<!-- jQuery library -->
@@ -53,7 +53,7 @@
 			<f:view>
 				<h:form>
 				<div align="center">
-					<h2>Login Area Riservata</h2>
+					<h2>Dati nuovo Paziente</h2>
 				</div>
 				<div align="center">
 					<label for="inputNome">Nome:</label>
@@ -97,6 +97,7 @@
 					<h:inputText styleClass="form-control" value="#{pazienteController.telefono}" required="true" requiredMessage="Telefono obbligatorio!" id="telefono" style="width:250px"/>
 					<h:message for="email"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<h:commandButton value="Invia" action="#{pazienteController.createPaziente}" styleClass="btn btn-lg btn-primary btn-block"/>
 				</div>

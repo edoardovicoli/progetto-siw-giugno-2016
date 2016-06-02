@@ -50,7 +50,6 @@
 				</div>
 			</div>
 		</div>
-	<body>
 		<f:view>
 			<div align="center"><h2>Dettagli per tipologia: <h:outputText value="#{tipologiaEsameController.nomeTipologiaEsameDettaglio}"/></h2></div>
 			<h:form>

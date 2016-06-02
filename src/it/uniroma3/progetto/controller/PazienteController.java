@@ -5,10 +5,8 @@ import java.util.Date;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 
-import it.uniroma3.progetto.model.Esame;
 import it.uniroma3.progetto.model.Paziente;
 import it.uniroma3.progetto.model.PazienteFacade;
-import it.uniroma3.progetto.model.TipologiaEsame;
 
 @ManagedBean
 public class PazienteController {
@@ -38,7 +36,7 @@ public class PazienteController {
 			this.messaggioSuccesso = "Paziente inserito con successo!";
 		} else {
 			this.messaggioSuccesso = null;
-			this.messaggioFallimento = "Il paziente è già presente nell'anagrafica.";
+			this.messaggioFallimento = "Il paziente inserito è già presente nell'anagrafica.";
 		}
 		// riazzero i campi
 		this.nome = "";

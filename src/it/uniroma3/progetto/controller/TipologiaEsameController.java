@@ -62,6 +62,7 @@ public class TipologiaEsameController {
 			List<Esame> esami = this.tipologiaEsame.getEsami();
 			boolean esameTrovato = false;
 			
+			// se c'è già un esame uguale...
 			for(Esame e:esami) {
 				if (e.getNome().equals(this.nomeEsame)) {
 					esameTrovato = true;
@@ -77,6 +78,7 @@ public class TipologiaEsameController {
 			List<PrerequisitoEsame> prerequisiti = this.tipologiaEsame.getPrerequisitiEsame();
 			boolean prerequisitoTrovato = false;
 			
+			// se c'è già un prerequisito uguale...
 			for (PrerequisitoEsame pe:prerequisiti) {
 				if (pe.getNome().equals(this.nomePrerequisito) && pe.getValore().equals(this.valorePrerequisito)) {
 					prerequisitoTrovato = true;

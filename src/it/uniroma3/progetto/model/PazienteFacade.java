@@ -46,6 +46,14 @@ public class PazienteFacade {
 		}
 	}
 	
+	public List<Paziente> findAllPazienti() {
+		Query q = em.createQuery("SELECT p FROM Paziente p");
+		System.out.println("*********PRENDOPAZ**********");
+		List<Paziente> pazienti = q.getResultList();
+		System.out.println("DIMENSIONE LISTA *****" + pazienti.size());
+		return pazienti;
+	}
+	
 	public Paziente getPaziente(Long id) {
 		Paziente paziente = em.find(Paziente.class, id);
 		return paziente;

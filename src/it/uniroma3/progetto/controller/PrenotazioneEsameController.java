@@ -11,7 +11,6 @@ import it.uniroma3.progetto.model.TipologiaEsameFacade;
 
 @ManagedBean
 public class PrenotazioneEsameController {
-	private String nome;
 	private List<String> tipologieEsamePrenotate;
 	private List<String> tipologieEsameSelezionabili;
 	
@@ -32,7 +31,7 @@ public class PrenotazioneEsameController {
 //			System.out.println(e.getNome());
 //			this.tipologieEsameSelezionabili.add(e.getNome());
 //		}
-		this.nome = "Ciao";
+		//this.nome = "Ciao";
 	}
 	
 	public String register() {
@@ -64,18 +63,18 @@ public class PrenotazioneEsameController {
 		this.tipologieEsameSelezionabili = tipologieEsameSelezionabili;
 	}
 
-	public String getNome() {
-		List<TipologiaEsame> ls = this.tipologiaEsameFacade.findAll();
-		this.tipologieEsameSelezionabili = new ArrayList<String>();
-		for(TipologiaEsame e:ls) {
-			System.out.println(e.getNome());
-			this.tipologieEsameSelezionabili.add(e.getNome());
-		}
-		return nome;
-	}
+//	public String getNome() {
+//		List<TipologiaEsame> ls = this.tipologiaEsameFacade.findAll();
+//		this.tipologieEsameSelezionabili = new ArrayList<String>();
+//		for(TipologiaEsame e:ls) {
+//			System.out.println(e.getNome());
+//			this.tipologieEsameSelezionabili.add(e.getNome());
+//		}
+//		//return nome;
+//	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		//this.nome = nome;
 	}
 	
 }

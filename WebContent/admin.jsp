@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -58,16 +58,6 @@
 			<div align="center">
 				<h3>Area Riservata Direttore Laboratorio</h3>
 			</div>
-			<div align="center" class="panel panel-primary">
-            	<div align="center" class="panel-heading">
-              		<div>
-              			<h3 class="panel-title">Panel title</h3>
-              		</div>
-            	</div>
-            	<div align="center" class="panel-body">
-              		Username: <h:outputText value="#{loginController.username}" id="username"/>
-            	</div>
-          	</div>
 			<div align="center">
 				<h3><a href="newTipologiaEsame.jsp">Inserisci Tipologia Esame</a></h3>
 			</div>

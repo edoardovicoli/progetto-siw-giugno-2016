@@ -45,6 +45,7 @@
 								</ul>
 							</li>
 							<li><a href="loginAdmin.jsp">Area Riservata</a></li>
+							<li><a href="admin.jsp">Torna indietro</a></li>
 						</ul>
 					</div>
 				</div>

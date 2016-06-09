@@ -46,18 +46,41 @@
 							</ul>
 						</li>
 						<li><a href="loginAdmin.jsp">Area Riservata</a></li>
+						<li><a href="admin.jsp">Torna indietro</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<f:view>
-			<div align="center">
-				<h1>Laboratorio Analisi Cliniche - Prenotazione Esame</h1>
-			</div>
 			<h:form>
-				<h:selectManyCheckbox value="#{prenotazioneEsameController.tipologieEsamePrenotate}">
-					<f:selectItems value="#{prenotazioneEsameController.tipologieEsameSelezionabili}"/>
-				</h:selectManyCheckbox>
+				<div align="center">
+					<h1>Laboratorio Analisi Cliniche - Prenotazione Esame</h1>
+				</div>
+				<div align="center">
+					Medico: <h:selectOneMenu value="#{esamePazienteController.medico}">
+								<f:selectItems value="#{esamePazienteController.mediciSelezionabili}"/>
+							</h:selectOneMenu>
+				</div>
+				<div align="center">
+					Paziente: <h:selectOneMenu value="#{esamePazienteController.paziente}">
+								<f:selectItems value="#{esamePazienteController.pazientiSelezionabili}"/>
+							</h:selectOneMenu>
+				</div>
+				<div align="center">
+					Tipologia Esame: <h:selectOneMenu value="#{esamePazienteController.tipologiaEsame}">
+										<f:selectItems value="#{esamePazienteController.tipologieEsameSelezionabili}"/>
+									 </h:selectOneMenu>
+					<h:commandButton value="Mostra Esami" action="#{esamePazienteController.mostraEsami}" styleClass="btn btn-lg btn-primary btn-block"/>
+				</div>
+				<div align="center">
+					<h:outputText value="#{esamePazienteController.esamiPerTipologia}"/><h:selectManyCheckbox value="#{esamePazienteController.esamiSelezionati}">
+											<f:selectItems value="#{esamePazienteController.esamiPerTipologiaStringhe}"/>
+										 </h:selectManyCheckbox>
+				</div>
+				<p></p>
+				<div align="center">
+					<h:commandButton value="Invia" action="#{esamePazienteController.createEsamePaziente}" styleClass="btn btn-lg btn-primary btn-block"/>
+				</div>
 			</h:form>
 		</f:view>
 	</body>

@@ -57,6 +57,14 @@ public class MedicoFacade {
 		List<Medico> medici = em.createQuery(cq).getResultList();
 		return medici;
 	}
+	
+	public List<Medico> findAllMedici() {
+		Query q = em.createQuery("SELECT m FROM Medico m");
+		System.out.println("*********PRENDOMED**********");
+		List<Medico> medici = q.getResultList();
+		System.out.println("DIMENSIONE LISTA *****" + medici.size());
+		return medici;
+	}
 
 	public void updateMedico(Medico medico) {
 		em.merge(medico);

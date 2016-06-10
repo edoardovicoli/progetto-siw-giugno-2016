@@ -46,6 +46,19 @@ public class MedicoFacade {
 		}
 	}
 	
+	public Medico findByNomeMedico(String nomeMedico) {
+		Query queryNomeMedico = em.createQuery("SELECT OBJECT(m) FROM Medico AS m WHERE m.nome=?1");
+		queryNomeMedico.setParameter(1, nomeMedico);
+		List<Medico> medici = queryNomeMedico.getResultList();
+		if (medici.isEmpty()) {
+			return null;
+		} else {
+			System.out.println("MEDICO ESISTE NELLA LISTA");
+			Medico m = (Medico)medici.get(0);
+			return m;
+		}
+	}
+	
 	public Medico getMedico(Long id) {
 		Medico medico = em.find(Medico.class, id);
 		return medico;

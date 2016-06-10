@@ -77,6 +77,13 @@
 											<f:selectItems value="#{esamePazienteController.esamiPerTipologiaStringhe}"/>
 										 </h:selectManyCheckbox>
 				</div>
+				<div align="center">
+					<label for="inputData">Data di Svolgimento:</label>
+					<h:inputText styleClass="form-control" value="#{esamePazienteController.dataSvolgimentoCartella}" required="true" requiredMessage="Data obbligatoria!" id="data" style="width:250px">
+						<f:convertDateTime pattern="dd-MM-yyyy"/>
+					</h:inputText>
+					<h:message for="data"/>
+				</div>
 				<p></p>
 				<div align="center">
 					<h:commandButton value="Invia" action="#{esamePazienteController.createEsamePaziente}" styleClass="btn btn-lg btn-primary btn-block"/>

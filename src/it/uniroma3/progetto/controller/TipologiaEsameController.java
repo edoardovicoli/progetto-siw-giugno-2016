@@ -48,7 +48,7 @@ public class TipologiaEsameController {
 			this.tipologiaEsame = new TipologiaEsame(this.nome, this.codice, this.costo, this.descrizione);
 			
 			this.esame = new Esame(this.nomeEsame);
-			this.esami=tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
+			this.esami = tipologiaEsameFacade.addEsame(this.tipologiaEsame, this.esame);
 			
 			this.prerequisitoEsame = new PrerequisitoEsame(this.nomePrerequisito, this.valorePrerequisito);
 			this.prerequisitiEsame = tipologiaEsameFacade.addPrerequisito(this.tipologiaEsame, this.prerequisitoEsame);

@@ -8,6 +8,8 @@ import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 
 import it.uniroma3.progetto.model.Esame;
+import it.uniroma3.progetto.model.EsamePaziente;
+import it.uniroma3.progetto.model.EsamePazienteFacade;
 import it.uniroma3.progetto.model.Medico;
 import it.uniroma3.progetto.model.MedicoFacade;
 import it.uniroma3.progetto.model.Paziente;
@@ -18,7 +20,6 @@ import it.uniroma3.progetto.model.TipologiaEsameFacade;
 @ManagedBean
 public class EsamePazienteController {
 	private Date dataPrenotazione;
-	private Date dataSvolgimento;
 	private String medico;
 	private String paziente;
 	private String tipologiaEsame;
@@ -28,6 +29,13 @@ public class EsamePazienteController {
 	private List<String> esamiPerTipologiaStringhe;
 	private List<String> esamiSelezionati;
 	
+	private Date dataSvolgimentoCartella;
+	private EsamePaziente esamePazienteCartella;
+	private TipologiaEsame tipologiaEsameCartella;
+	private List<Esame> esamiCartella;
+	private Medico medicoCartella;
+	private Paziente pazienteCartella;
+	
 	private String esamiPerTipologia = "";
 	
 	@EJB
@@ -36,18 +44,36 @@ public class EsamePazienteController {
 	private PazienteFacade pazienteFacade;
 	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
+	@EJB
+	private EsamePazienteFacade esamePazienteFacade;
 	
 	public String createEsamePaziente() {
-		System.out.println(this.medico);
-		System.out.println(this.paziente);
-		if (this.esamiSelezionati.isEmpty()) {
-			System.out.println(".......................................... LISTA ESAMI VUOTA");
-		} else {
-			for (String s:esamiSelezionati) {
-				System.out.println("9999999999999999999999999" + s);
-			}
-		}
+//		System.out.println(this.medico);
+//		System.out.println(this.paziente);
+//		if (this.esamiSelezionati.isEmpty()) {
+//			System.out.println(".......................................... LISTA ESAMI VUOTA");
+//		} else {
+//			for (String s:esamiSelezionati) {
+//				System.out.println("9999999999999999999999999" + s);
+//			}
+//		}
+		this.esamePazienteCartella = new EsamePaziente(this.dataSvolgimentoCartella);
 		
+		this.tipologiaEsameCartella = this.tipologiaEsameFacade.findByName(this.tipologiaEsame);
+		this.esamePazienteFacade.addTipologiaEsame(this.esamePazienteCartella, this.tipologiaEsameCartella);
+		this.tipologiaEsameCartella.setEsamePaziente(this.esamePazienteCartella);
+		
+		for (String esame:esamiSelezionati) {
+			Esame esameCartella = new Esame(esame);
+			this.esamePazienteFacade.addEsame(this.esamePazienteCartella, esameCartella);
+		}
+		this.medicoCartella = this.medicoFacade.findByNomeMedico(this.medico);
+		this.esamePazienteFacade.setMedicoCartella(this.esamePazienteCartella, this.medicoCartella);
+		
+		this.pazienteCartella = this.pazienteFacade.findByCF(this.paziente);
+		this.esamePazienteFacade.setPazienteCartella(this.esamePazienteCartella, this.pazienteCartella);
+		
+		this.esamePazienteFacade.createEsamePaziente(this.esamePazienteCartella);
 		return "newPrenotazioneEsame";
 	}
 	
@@ -73,14 +99,6 @@ public class EsamePazienteController {
 		this.dataPrenotazione = dataPrenotazione;
 	}
 
-	public Date getDataSvolgimento() {
-		return dataSvolgimento;
-	}
-
-	public void setDataSvolgimento(Date dataSvolgimento) {
-		this.dataSvolgimento = dataSvolgimento;
-	}
-
 	public String getMedico() {
 		return medico;
 	}
@@ -93,7 +111,7 @@ public class EsamePazienteController {
 		List<String> mediciSelezionabili = new ArrayList<String>();
 		List<Medico> listaMedici = this.medicoFacade.findAllMedici();
 		for(Medico m:listaMedici) {
-			String nomeMedico = m.getCodice() + ": " + m.getNome() + " " + m.getCognome() + " - " + m.getSpecializzazione();
+			String nomeMedico = /* m.getCodice() + ": " + */m.getNome()/* + " " + m.getCognome() + " - " + m.getSpecializzazione()*/;
 			mediciSelezionabili.add(nomeMedico);
 		}
 		return mediciSelezionabili;
@@ -115,7 +133,7 @@ public class EsamePazienteController {
 		List<String> pazientiSelezionabili = new ArrayList<String>();
 		List<Paziente> listaPazienti = this.pazienteFacade.findAllPazienti();
 		for(Paziente p:listaPazienti) {
-			String nomePaziente = p.getCf() + ": " + p.getNome() + " - " + p.getCognome();
+			String nomePaziente = p.getCf()/* + ": " + p.getNome() + " - " + p.getCognome()*/;
 			pazientiSelezionabili.add(nomePaziente);
 		}
 		return pazientiSelezionabili;
@@ -171,6 +189,29 @@ public class EsamePazienteController {
 	public void setEsamiPerTipologia(String esamiPerTipologia) {
 		this.esamiPerTipologia = esamiPerTipologia;
 	}
+
+	public TipologiaEsame getTipologiaEsameCartella() {
+		return tipologiaEsameCartella;
+	}
+
+	public void setTipologiaEsameCartella(TipologiaEsame tipologiaEsameCartella) {
+		this.tipologiaEsameCartella = tipologiaEsameCartella;
+	}
+
+	public List<Esame> getEsamiCartella() {
+		return esamiCartella;
+	}
+
+	public void setEsamiCartella(List<Esame> esamiCartella) {
+		this.esamiCartella = esamiCartella;
+	}
+
+	public Date getDataSvolgimentoCartella() {
+		return dataSvolgimentoCartella;
+	}
+
+	public void setDataSvolgimentoCartella(Date dataSvolgimentoCartella) {
+		this.dataSvolgimentoCartella = dataSvolgimentoCartella;
+	}
 	
 }
-

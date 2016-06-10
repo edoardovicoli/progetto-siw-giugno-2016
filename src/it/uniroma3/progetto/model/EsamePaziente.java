@@ -1,5 +1,6 @@
 package it.uniroma3.progetto.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +46,8 @@ public class EsamePaziente {
 	public EsamePaziente(Date dataSvolgimento) {
 		super();
 		this.dataSvolgimento = dataSvolgimento;
+		this.tipologieEsame = new ArrayList<TipologiaEsame>();
+		this.esami = new ArrayList<Esame>();
 	}
 
 	public Long getId() {

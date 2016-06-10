@@ -22,7 +22,7 @@ public class EsamePazienteFacade {
 			System.out.println("EM NULL");
 		}
 		try {
-			em.persist(esamePaziente);
+			em.merge(esamePaziente);
 			System.out.println("EsamePazienteFacade: ESAMEPAZIENTE CREATA");
 		} catch(Exception e) {
 			System.out.println("ERRORE CREATEESAMEPAZIENTE");
@@ -75,6 +75,14 @@ public class EsamePazienteFacade {
 		List<Esame> esami = q.getResultList();
 		System.out.println("DIMENSIONE LISTA *****" + esami.size());
 		return esami;
+	}
+	
+	public void setMedicoCartella(EsamePaziente esamePaziente, Medico medico) {
+		esamePaziente.setMedico(medico);
+	}
+	
+	public void setPazienteCartella(EsamePaziente esamePaziente, Paziente paziente) {
+		esamePaziente.setPaziente(paziente);
 	}
 	
 	public void updateEsamePaziente(EsamePaziente esamePaziente) {

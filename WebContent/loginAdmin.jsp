@@ -33,19 +33,6 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="main.jsp">Home</a></li>
 						<li><a href="about.jsp">About</a></li>
-						<li><a href="#contact">Contact</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Servizi<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="tipologieEsame.jsp">Esami offerti</a></li>
-								<li><a href="#">Another Action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li class="dropdown-header">Nav header</li>
-								<li><a href="#">Separated link</a></li>
-								<li><a href="#">One More Separated link</a></li>
-							</ul>
-						</li>
 						<li><a href="loginAdmin.jsp">Area Riservata</a></li>
 					</ul>
 				</div>

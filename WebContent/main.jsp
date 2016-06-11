@@ -45,13 +45,13 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>ClinicaACME</h1>
-				<p>This is a template for a simple marketing or informational
-					website. It includes a large callout called a jumbotron and three
-					supporting pieces of content. Use it as a starting point to create
-					something more unique.</p>
+				<p>	La ClinicaACME è da sempre la migliore clinica al mondo
+					per effettuare analisi di qualunque tipo. E' sicuramente
+					la più all'avanguardia in quanto il suo sito permette
+					la gestione remota dei dati di ogni singolo paziente.
+				</p>
 				<p>
-					<a class="btn btn-primary btn-lg" href="#" role="button">Learn
-						more »</a>
+					<a class="btn btn-primary btn-lg" href="#" role="button">Leggi di più »</a>
 				</p>
 			</div>
 		</div>

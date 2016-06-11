@@ -63,8 +63,6 @@ public class MedicoController {
 			int indiceSpazioBianco = this.medicoSelezionato.indexOf(" ");
 			this.nomeMedicoPerEsami = this.medicoSelezionato.substring(0, indiceSpazioBianco);
 			this.cognomeMedicoPerEsami = this.medicoSelezionato.substring(indiceSpazioBianco+1);
-			System.out.println("NOME MEDICO: " + this.nomeMedicoPerEsami);
-			System.out.println("COGNOME MEDICO: " + this.cognomeMedicoPerEsami);
 		}
 		this.listaEsamiPazientePerEsami = this.esamePazienteFacade.findAllEsamiByMedicoNomeCognome(this.nomeMedicoPerEsami, this.cognomeMedicoPerEsami);
 		if (this.listaEsamiPazientePerEsami.isEmpty()) {
@@ -168,6 +166,9 @@ public class MedicoController {
 	}
 
 	public List<EsamePaziente> getListaEsamiPazientePerEsami() {
+		if (this.listaEsamiPazientePerEsami==null) {
+			this.listaEsamiPazientePerEsami = new ArrayList<EsamePaziente>();
+		}
 		return listaEsamiPazientePerEsami;
 	}
 

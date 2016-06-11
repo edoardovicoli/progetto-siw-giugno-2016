@@ -42,6 +42,8 @@
 				<h:form>
 				<div align="center">
 					<h2>Dati nuovo Paziente</h2>
+					<h4>Inserire dettagli Tipologia Esame</h4>
+					<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 				</div>
 				<div align="center">
 					<label for="inputNome">Nome:</label>
@@ -51,6 +53,7 @@
 					<h:inputText styleClass="form-control" value="#{pazienteController.cognome}" required="true" requiredMessage="Cognome Obbligatorio!" id="cognome" style="width:250px"/>
 					<h:message for="cognome"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputData">Data di Nascita:</label>
 					<h:inputText styleClass="form-control" value="#{pazienteController.dataNascita}" required="true" requiredMessage="Data obbligatorio!" id="data" style="width:250px">
@@ -58,6 +61,7 @@
 					</h:inputText>
 					<h:message for="data"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<h:selectOneMenu value="#{pazienteController.sesso}">
 						<label for="inputSesso">Sesso:</label>
@@ -65,21 +69,25 @@
    						<f:selectItem itemValue="F" itemLabel="F"/>	   							
 					</h:selectOneMenu>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputIndirizzo">Indirizzo:</label>
 					<h:inputText styleClass="form-control" value="#{pazienteController.indirizzo}" required="true" requiredMessage="Indirizzo obbligatorio!" id="indirizzo" style="width:400px"/>
 					<h:message for="indirizzo"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputCF">Codice Fiscale:</label>
 					<h:inputText styleClass="form-control" value="#{pazienteController.cf}" required="true" requiredMessage="CF obbligatorio!" id="CF" style="width:400px"/>
 					<h:message for="CF"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputEmail">E-Mail:</label>
 					<h:inputText styleClass="form-control" value="#{pazienteController.email}" required="true" requiredMessage="E-Mail obbligatorio!" id="email" style="width:300px"/>
 					<h:message for="email"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputTelefono">Recapito Telefonico:</label>
 					<h:inputText styleClass="form-control" value="#{pazienteController.telefono}" required="true" requiredMessage="Telefono obbligatorio!" id="telefono" style="width:250px"/>
@@ -89,6 +97,7 @@
 				<div align="center">
 					<h:commandButton value="Invia" action="#{pazienteController.createPaziente}" styleClass="btn btn-lg btn-primary btn-block"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<h:outputText value="#{pazienteController.messaggioSuccesso}"></h:outputText>
 				</div>

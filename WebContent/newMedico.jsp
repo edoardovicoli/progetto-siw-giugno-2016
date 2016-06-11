@@ -41,6 +41,8 @@
 			<h:form>
 				<div align="center">
 					<h2>Dati nuovo Medico</h2>
+					<h4>Inserire dettagli nuovo Medico)</h4>
+					<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 				</div>
 				<p></p>
 				<div align="center">
@@ -48,16 +50,19 @@
 					<h:inputText styleClass="form-control" value="#{medicoController.codice}" required="true" requiredMessage="Codice Obbligatorio!" id="codice" style="width:250px"/>
 					<h:message for="codice"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputNome">Nome:</label>
 					<h:inputText styleClass="form-control" value="#{medicoController.nome}" required="true" requiredMessage="Nome Obbligatorio!" id="nome" style="width:250px"/>
 					<h:message for="nome"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputCognome">Cognome:</label>
 					<h:inputText styleClass="form-control" value="#{medicoController.cognome}" required="true" requiredMessage="Cognome Obbligatorio!" id="cognome" style="width:250px"/>
 					<h:message for="cognome"/>
 				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputSpecializzazione">Specializzazione:</label>
 					<h:inputText styleClass="form-control" value="#{medicoController.specializzazione}" required="true" requiredMessage="Specializzazione Obbligatoria!" id="specializzazione" style="width:250px"/>

@@ -42,6 +42,7 @@
 			<h:form>
 				<div align="center">
 					<h2>Selezionare o inserire il nome e il cognome del Medico</h2>
+					<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 				</div>
 				<p></p>
 					<div align="center">

@@ -40,41 +40,46 @@
 		</div>
 		<f:view>
 			<div align="center">
-				<h1>Laboratorio Analisi Cliniche</h1>
+				<h2>Laboratorio Analisi Cliniche</h2>
+				<h4>Inserire dettagli Esame (Cartella Clinica)</h4>
+				<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			</div>
 			<h:form>
 				<div align="center">
 					Nome Tipologia Esame: <h:inputText value="#{tipologiaEsameController.nome}" required="true"
 					requiredMessage="Nome Tipologia Esame obbligatorio!" id="nomeTipologia"/>
 				</div>
+				<p></p>
 				<div align="center">
 					Codice Tipologia: <h:inputText value="#{tipologiaEsameController.codice}" required="true"
 					requiredMessage="Codice Tipologia Esame obbligatorio!" id="codiceTipologia"/>
 				</div>
+				<p></p>
 				<div align="center">
 					Costo Tipologia: <h:inputText value="#{tipologiaEsameController.costo}" required="true"
 					requiredMessage="Costo Tipologia Esame obbligatorio!" id="costoTipologia"/>
 				</div>
+				<p></p>
 				<div align="center">
 					Descrizione Tipologia: <h:inputText value="#{tipologiaEsameController.descrizione}" required="true"
 					requiredMessage="Descrizione Tipologia Esame obbligatoria!" id="descrizioneTipologia"/>
 				</div>
-				
+				<p></p>
 				<div align="center">
 					Nome Esame: <h:inputText value="#{tipologiaEsameController.nomeEsame}" required="true"
 					requiredMessage="Nome Esame obbligatorio" id="nomeEsame"/>
 				</div>
-				
+				<p></p>
 				<div align="center">
 					Nome Prerequisito: <h:inputText value="#{tipologiaEsameController.nomePrerequisito}" required="true"
 					requiredMessage="Nome Prerequisito obbligatorio" id="nomePrerequisitoEsame"/>
 				</div>
-				
+				<p></p>
 				<div align="center">
 					Valore Prerequisito: <h:inputText value="#{tipologiaEsameController.valorePrerequisito}" required="true"
 					requiredMessage="Valore Prerequisito obbligatorio" id="valorePrerequisitoEsame"/>
 				</div>
-				
+				<p></p>
 				<div align="center">
 					<h:commandButton value="Submit" action="#{tipologiaEsameController.createTipologiaEsame}" styleClass="btn btn-lg btn-success"/>
 				</div>

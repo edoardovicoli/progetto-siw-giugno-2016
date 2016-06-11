@@ -38,43 +38,52 @@
 				</div>
 			</div>
 		</div>
+		<div align="center">
+			<h2>Laboratorio Analisi Cliniche - Prenotazione Esame</h2>
+			<h4>Inserire dettagli Tipologia Esame</h4>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
+		</div>
 		<f:view>
 			<h:form>
-				<div align="center">
-					<h1>Laboratorio Analisi Cliniche - Prenotazione Esame</h1>
-				</div>
 				<div align="center">
 					<label for="inputCodice">Codice Cartella: </label>
 					<h:inputText styleClass="form-control" value="#{esamePazienteController.codice}" required="true" requiredMessage="Codice Obbligatorio!" id="codice" style="width:250px"/>
 					<h:message for="codice"/>
 				</div>
-				<div align="center">
-					Medico: <h:selectOneMenu value="#{esamePazienteController.medico}">
-								<f:selectItems value="#{esamePazienteController.mediciSelezionabili}"/>
-							</h:selectOneMenu>
-				</div>
-				<div align="center">
-					Paziente: <h:selectOneMenu value="#{esamePazienteController.paziente}">
-								<f:selectItems value="#{esamePazienteController.pazientiSelezionabili}"/>
-							</h:selectOneMenu>
-				</div>
-				<div align="center">
-					Tipologia Esame: <h:selectOneMenu value="#{esamePazienteController.tipologiaEsame}">
-										<f:selectItems value="#{esamePazienteController.tipologieEsameSelezionabili}"/>
-									 </h:selectOneMenu>
-					<h:commandButton value="Mostra Esami" action="#{esamePazienteController.mostraEsami}" styleClass="btn btn-lg btn-primary btn-block"/>
-				</div>
-				<div align="center">
-					<h:outputText value="#{esamePazienteController.esamiPerTipologia}"/><h:selectManyCheckbox value="#{esamePazienteController.esamiSelezionati}">
-											<f:selectItems value="#{esamePazienteController.esamiPerTipologiaStringhe}"/>
-										 </h:selectManyCheckbox>
-				</div>
+				<p></p>
 				<div align="center">
 					<label for="inputData">Data di Svolgimento:</label>
 					<h:inputText styleClass="form-control" value="#{esamePazienteController.dataSvolgimentoCartella}" required="true" requiredMessage="Data obbligatoria!" id="data" style="width:250px">
 						<f:convertDateTime pattern="dd-MM-yyyy"/>
 					</h:inputText>
 					<h:message for="data"/>
+				</div>
+				<p></p>
+				<div align="center">
+					Medico: <h:selectOneMenu value="#{esamePazienteController.medico}">
+								<f:selectItems value="#{esamePazienteController.mediciSelezionabili}"/>
+							</h:selectOneMenu>
+				</div>
+				<p></p>
+				<div align="center">
+					Paziente: <h:selectOneMenu value="#{esamePazienteController.paziente}">
+								<f:selectItems value="#{esamePazienteController.pazientiSelezionabili}"/>
+							  </h:selectOneMenu>
+				</div>
+				<p></p>
+				<div align="center">
+					Tipologia Esame: <h:selectOneMenu value="#{esamePazienteController.tipologiaEsame}">
+										<f:selectItems value="#{esamePazienteController.tipologieEsameSelezionabili}"/>
+									 </h:selectOneMenu>
+					<p></p>
+					<h:commandButton value="Mostra Esami" action="#{esamePazienteController.mostraEsami}" styleClass="btn btn-lg btn-primary btn-block"/>
+				</div>
+				<p></p>
+				<div align="center">
+					<h:outputText value="#{esamePazienteController.esamiPerTipologia}"/>
+					<h:selectManyCheckbox value="#{esamePazienteController.esamiSelezionati}">
+						<f:selectItems value="#{esamePazienteController.esamiPerTipologiaStringhe}"/>
+					</h:selectManyCheckbox>
 				</div>
 				<p></p>
 				<div align="center">

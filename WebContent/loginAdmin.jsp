@@ -41,6 +41,7 @@
 			<h:form>
 			<div align="center">
 				<h2>Login Area Riservata</h2>
+				<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			</div>
 			<div align="center">
 				<label for="inputUsername">Username:</label>
@@ -52,9 +53,7 @@
 				<h:inputSecret styleClass="form-control" value="#{loginController.password}" required="true" requiredMessage="Password obbligatorio!" id="password"/>
 				<h:message for="password"/>
 			</div>
-			<div></div>
-			<hr>
-			<div></div>
+			<p></p>
 			<div align="center">
 				<h:commandButton value="Invia" action="#{loginController.validate}" styleClass="btn btn-lg btn-primary btn-block"/>
 			</div>

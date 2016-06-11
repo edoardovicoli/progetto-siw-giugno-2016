@@ -1,12 +1,12 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Sezione Amministrazione</title>
-
+		<title>Contattaci</title>
+		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
@@ -38,37 +38,36 @@
 			</div>
 		</div>
 		<f:view>
-			<div align="center">
-				<h2>Laboratorio Analisi Cliniche</h2>
-				<h4>Azioni possibili</h4>
-			</div>
-			<div align="center">
-				<h3>Area Riservata Direttore Laboratorio</h3>
-			</div>
-			<hr style="width: 30%; color:black; height: 1px; background-color:black;"/>
-			<div align="center">
-				<h3><a href="newTipologiaEsame.jsp">Inserisci Tipologia Esame</a></h3>
-			</div>
-			<hr style="width: 30%; color:black; height: 1px; background-color:black;"/>
-			<div align="center">
-				<h3><a href="newPaziente.jsp">Inserisci nuovo Paziente</a></h3>
-			</div>
-			<hr style="width: 30%; color:black; height: 1px; background-color:black;"/>
-			<div align="center">
-				<h3><a href="newPrenotazioneEsame.jsp">Prenota nuovo Esame</a></h3>
-			</div>
-			<hr style="width: 30%; color:black; height: 1px; background-color:black;"/>
-			<div align="center">
-				<h3><a href="newMedico.jsp">Inserisci nuovo Medico</a></h3>
-			</div>
-			<hr style="width: 30%; color:black; height: 1px; background-color:black;"/>
-			<div align="center">
-				<h3><a href="esamiMedico.jsp">Controlla Esami di un Medico</a></h3>
-			</div>
-			<hr style="width: 30%; color:black; height: 1px; background-color:black;"/>
-			<div align="center">
-				<h3><a href="elencoEsamiInCorso.jsp">Inserisci risultati Esame</a></h3>
-			</div>
+			<h:form>
+				<div align="center">
+					<h2>Scrivi la tua mail</h2>
+					<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
+				</div>
+				<div align="center">
+					<label for="inputNome">Nome:</label>
+					<h:inputText styleClass="form-control" required="true" requiredMessage="Nome Obbligatorio!" id="nome"/>
+					<h:message for="nome"/>
+				</div>
+				<div align="center">
+					<label for="inputCognome">Cognome:</label>
+					<h:inputText styleClass="form-control" required="true" requiredMessage="Cognome Obbligatorio!" id="cognome"/>
+					<h:message for="cognome"/>
+				</div>
+				<div align="center">
+					<label for="inputEmail">E-Mail:</label>
+					<h:inputText styleClass="form-control" required="true" requiredMessage="E-Mail Obbligatoria!" id="email"/>
+					<h:message for="email"/>
+				</div>
+				<div align="center">
+					<label for="inputCorpo">E-Mail:</label>
+					<h:inputText styleClass="form-control" required="true" requiredMessage="Corpo Obbligatorio!" id="corpo"/>
+					<h:message for="corpo"/>
+				</div>
+				<p></p>
+				<div align="center">
+					<h:commandButton value="Invia" styleClass="btn btn-lg btn-primary btn-block"/>
+				</div>
+			</h:form>
 		</f:view>
 	</body>
 </html>

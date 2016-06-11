@@ -49,6 +49,7 @@
 				<h:inputText styleClass="form-control" value="#{loginPazienteController.codiceFiscale}" required="true" requiredMessage="CF obbligatorio!" id="cf"/>
 				<h:message for="cf"/>
 			</div>
+			<p></p>
 			<div align="center">
 				<h:commandButton value="Invia" action="#{loginPazienteController.validate}" styleClass="btn btn-lg btn-primary btn-block"/>
 			</div>

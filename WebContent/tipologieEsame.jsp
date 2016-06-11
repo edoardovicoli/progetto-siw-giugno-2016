@@ -41,23 +41,24 @@
 		</div>
 		<div align="center">
 			<h2>Tipologie Esame Offerte</h2>
-				<h4>Clicca sulla Tipologia per saperne di più</h4>
-					<h:form>
-						<c:forEach var="tipologiaEsame" items="#{tipologiaEsameController.tipologieEsame}">
- 							<div>
- 								<h:outputText value="#{tipologiaEsame.nome}"/>
-								<h:outputText value="  "/>
-								<h:commandButton value="Lista Esami" type="submit" action="#{tipologiaEsameController.tipologiaEsameDettaglio(tipologiaEsame.nome)}">
-									<f:param name="action" value="#{tipologiaEsame.nome}"/>
-								</h:commandButton>
-								<h:outputText value="  "/>
-								<h:commandButton value="Dettagli" onclick="alert('#{tipologiaEsame.descrizione}' + ' ' + '- Costo: ' + '#{tipologiaEsame.costo}')">
-									<f:param name="action" value="#{tipologiaEsame.nome}"/>
-								</h:commandButton>
-							</div>
-						</c:forEach>
-					</h:form>
-			</div>
+			<h4>Clicca sulla Tipologia per saperne di più</h4>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
+			<h:form>
+				<c:forEach var="tipologiaEsame" items="#{tipologiaEsameController.tipologieEsame}">
+ 					<div>
+ 						<h:outputText value="#{tipologiaEsame.nome}"/>
+						<h:outputText value="  "/>
+						<h:commandButton value="Lista Esami" type="submit" action="#{tipologiaEsameController.tipologiaEsameDettaglio(tipologiaEsame.nome)}">
+							<f:param name="action" value="#{tipologiaEsame.nome}"/>
+						</h:commandButton>
+						<h:outputText value="  "/>
+						<h:commandButton value="Dettagli" onclick="alert('#{tipologiaEsame.descrizione}' + ' ' + '- Costo: ' + '#{tipologiaEsame.costo}')">
+							<f:param name="action" value="#{tipologiaEsame.nome}"/>
+						</h:commandButton>
+					</div>
+				</c:forEach>
+			</h:form>
+		</div>
 		</f:view>
 	</body>
 </html>

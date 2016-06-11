@@ -71,7 +71,7 @@
 				<div class="col-md-4">
 					<h2>Referto Elettronico</h2>
 					<p> ClinicaACME offre il servizio "Referto Elettronico" per i pazienti che
-						hanno sostenuto un esame. Cliccando su "Maggiori dettagli" è possibile
+						hanno effettuato un esame. Cliccando su "Maggiori dettagli" è possibile
 						accedere alla pagina di Login per i pazienti.
 					</p>
 					<p>
@@ -82,7 +82,7 @@
 					<h2>Contatti</h2>
 					<p>	E' possibile contattare ClinicaACME direttamente da casa mandando una
 						mail. Dunque, è possibile chiedere chiarimenti riguardo problematiche
-						con la visualizzazione degli esami o altre informazioni.
+						con la visualizzazione degli esami, richiesta preventivi o altro.
 					</p>
 					<p>
 						<a class="btn btn-default" href="contact.jsp" role="button">Maggiori dettagli »</a>

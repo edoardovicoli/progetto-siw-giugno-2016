@@ -55,6 +55,7 @@
 				</p>
 			</div>
 		</div>
+		<hr style="width: 70%; color:black; height: 1px; background-color:black;"/>
 		<div class="container">
 			<!-- Example row of columns -->
 			<div class="row">

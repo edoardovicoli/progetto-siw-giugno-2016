@@ -41,7 +41,7 @@ public class TipologiaEsame {
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	private List<Esame> esami;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private EsamePaziente esamePaziente;
 	
 	public TipologiaEsame() {}

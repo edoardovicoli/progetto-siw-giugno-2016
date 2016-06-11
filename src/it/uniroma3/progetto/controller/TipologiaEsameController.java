@@ -249,6 +249,7 @@ public class TipologiaEsameController {
 	}
 	
 	public List<TipologiaEsame> getTipologieEsame() {
+		this.tipologieEsame = this.tipologiaEsameFacade.findAll();
 		return tipologieEsame;
 	}
 

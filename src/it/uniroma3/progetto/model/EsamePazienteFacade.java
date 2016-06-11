@@ -77,6 +77,21 @@ public class EsamePazienteFacade {
 		return esami;
 	}
 	
+	public List<EsamePaziente> findAllEsamiByMedico(Long idMedico) {
+		Query q = em.createQuery("SELECT OBJECT(ep) FROM EsamePaziente AS ep WHERE ep.medico_id=?1");
+		q.setParameter(1, idMedico);
+		List<EsamePaziente> esamiPaziente = q.getResultList();
+		return esamiPaziente;
+	}
+	
+	public List<EsamePaziente> findAllEsamiByMedicoNomeCognome(String nomeMedico, String cognomeMedico) {
+		Query q = em.createQuery("SELECT OBJECT(e) FROM EsamePaziente AS e WHERE e.medico.nome=?1 AND e.medico.cognome=?2");
+		q.setParameter(1, nomeMedico);
+		q.setParameter(2, cognomeMedico);
+		List<EsamePaziente> esamiPaziente = q.getResultList();
+		return esamiPaziente;
+	}
+	
 	public void setMedicoCartella(EsamePaziente esamePaziente, Medico medico) {
 		esamePaziente.setMedico(medico);
 	}

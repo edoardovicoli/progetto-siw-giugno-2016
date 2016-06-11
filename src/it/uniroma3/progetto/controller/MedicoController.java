@@ -1,8 +1,13 @@
 package it.uniroma3.progetto.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 
+import it.uniroma3.progetto.model.EsamePaziente;
+import it.uniroma3.progetto.model.EsamePazienteFacade;
 import it.uniroma3.progetto.model.Medico;
 import it.uniroma3.progetto.model.MedicoFacade;
 
@@ -16,8 +21,20 @@ public class MedicoController {
 	private String messaggioSuccesso;
 	private String messaggioFallimento;
 	
+	private Long idMedicoPerEsami;
+	private String nomeMedicoPerEsami;
+	private String cognomeMedicoPerEsami;
+	private Medico medicoPerEsami;
+	private List<EsamePaziente> listaEsamiPazientePerEsami;
+	
+	private String medicoSelezionato;
+	private List<String> mediciSelezionabili;
+	
 	@EJB
 	private MedicoFacade medicoFacade;
+	
+	@EJB
+	private EsamePazienteFacade esamePazienteFacade;
 	
 	public MedicoController() {}
 	
@@ -38,6 +55,28 @@ public class MedicoController {
 		this.cognome = "";
 		this.specializzazione = "";
 		return "newMedico";
+	}
+	
+	public String esamiMedico() {
+		if (this.nomeMedicoPerEsami.equals("") && this.cognomeMedicoPerEsami.equals("")) {
+			this.medicoSelezionato.trim();
+			int indiceSpazioBianco = this.medicoSelezionato.indexOf(" ");
+			this.nomeMedicoPerEsami = this.medicoSelezionato.substring(0, indiceSpazioBianco);
+			this.cognomeMedicoPerEsami = this.medicoSelezionato.substring(indiceSpazioBianco+1);
+			System.out.println("NOME MEDICO: " + this.nomeMedicoPerEsami);
+			System.out.println("COGNOME MEDICO: " + this.cognomeMedicoPerEsami);
+		}
+		this.listaEsamiPazientePerEsami = this.esamePazienteFacade.findAllEsamiByMedicoNomeCognome(this.nomeMedicoPerEsami, this.cognomeMedicoPerEsami);
+		if (this.listaEsamiPazientePerEsami.isEmpty()) {
+			System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		} else {
+			for (EsamePaziente ep:listaEsamiPazientePerEsami) {
+				System.out.println("_______________________________________________" + ep.getDataSvolgimento());
+			}
+		}
+		this.nomeMedicoPerEsami = "";
+		this.cognomeMedicoPerEsami = "";
+		return "esamiMedico";
 	}
 
 	public String getCodice() {
@@ -94,6 +133,68 @@ public class MedicoController {
 
 	public void setMessaggioFallimento(String messaggioFallimento) {
 		this.messaggioFallimento = messaggioFallimento;
+	}
+
+	public String getNomeMedicoPerEsami() {
+		return nomeMedicoPerEsami;
+	}
+
+	public void setNomeMedicoPerEsami(String nomeMedicoPerEsami) {
+		this.nomeMedicoPerEsami = nomeMedicoPerEsami;
+	}
+
+	public String getCognomeMedicoPerEsami() {
+		return cognomeMedicoPerEsami;
+	}
+
+	public void setCognomeMedicoPerEsami(String cognomeMedicoPerEsami) {
+		this.cognomeMedicoPerEsami = cognomeMedicoPerEsami;
+	}
+
+	public Medico getMedicoPerEsami() {
+		return medicoPerEsami;
+	}
+
+	public void setMedicoPerEsami(Medico medicoPerEsami) {
+		this.medicoPerEsami = medicoPerEsami;
+	}
+
+	public Long getIdMedicoPerEsami() {
+		return idMedicoPerEsami;
+	}
+
+	public void setIdMedicoPerEsami(Long idMedicoPerEsami) {
+		this.idMedicoPerEsami = idMedicoPerEsami;
+	}
+
+	public List<EsamePaziente> getListaEsamiPazientePerEsami() {
+		return listaEsamiPazientePerEsami;
+	}
+
+	public void setListaEsamiPazientePerEsami(List<EsamePaziente> listaEsamiPazientePerEsami) {
+		this.listaEsamiPazientePerEsami = listaEsamiPazientePerEsami;
+	}
+
+	public String getMedicoSelezionato() {
+		return medicoSelezionato;
+	}
+
+	public void setMedicoSelezionato(String medicoSelezionato) {
+		this.medicoSelezionato = medicoSelezionato;
+	}
+
+	public List<String> getMediciSelezionabili() {
+		List<String> mediciSelezionabili = new ArrayList<String>();
+		List<Medico> listaMedici = this.medicoFacade.findAllMedici();
+		for(Medico m:listaMedici) {
+			String nomeMedico = /* m.getCodice() + ": " + */m.getNome() + " " + m.getCognome()/* + " - " + m.getSpecializzazione()*/;
+			mediciSelezionabili.add(nomeMedico);
+		}
+		return mediciSelezionabili;
+	}
+
+	public void setMediciSelezionabili(List<String> mediciSelezionabili) {
+		this.mediciSelezionabili = mediciSelezionabili;
 	}
 	
 }

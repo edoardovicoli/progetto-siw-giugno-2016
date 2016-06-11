@@ -70,6 +70,9 @@
 			<div align="center">
 				<h3><a href="newMedico.jsp">Inserisci nuovo Medico</a></h3>
 			</div>
+			<div align="center">
+				<h3><a href="esamiMedico.jsp">Controlla Esami di un Medico</a></h3>
+			</div>
 		</f:view>
 	</body>
 </html>

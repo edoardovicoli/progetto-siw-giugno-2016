@@ -77,15 +77,25 @@
 				<div align="center">
 					<h:commandButton value="Invia" action="#{medicoController.esamiMedico}" styleClass="btn btn-lg btn-primary btn-block"/>
 				</div>
-			</h:form>
-			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
-			<c:forEach var="esamePaziente" items="#{medicoController.listaEsamiPazientePerEsami}">
+				<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 				<div align="center">
-		     		<h:outputText value="#{esamePaziente.dataSvolgimento}"/>
-		     		<h:outputText value=" "/>
-		     		<h:outputText value="#{esamePaziente.paziente.nome}"/>
+					<h3><h:outputText value="#{medicoController.listaEsamiSeguitiDalDr}"/></h3>
 				</div>
-			</c:forEach>
+				<c:forEach var="esamePaziente" items="#{medicoController.listaEsamiPazientePerEsami}">
+					<div align="center">
+						<h:outputText value="#{esamePaziente.codice}"/>
+		     			<h:outputText value=" "/>
+		     			<h:outputText value="#{esamePaziente.paziente.nome}"/>
+		     			<h:outputText value=" "/>
+		     			<h:outputText value="#{esamePaziente.paziente.cognome}"/>
+		     			<h:outputText value=" "/>
+		     			<h:outputText value="#{esamePaziente.dataSvolgimento}"/>
+		     			<h:outputText value=" "/>
+		     			<h:outputText value="#{esamePaziente.tipologiaEsame.nome}"/>
+		     			<h:outputText value=" "/>
+					</div>
+				</c:forEach>
+			</h:form>
 		</f:view>
 	</body>
 </html>

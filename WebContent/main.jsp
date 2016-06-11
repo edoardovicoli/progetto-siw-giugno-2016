@@ -49,6 +49,7 @@
 								<li><a href="#">One More Separated link</a></li>
 							</ul></li>
 						<li><a href="loginAdmin.jsp">Area Riservata</a></li>
+						<li><a href="loginPaziente.jsp">Referto Elettronico</a></li>
 					</ul>
 				</div>
 			</div>

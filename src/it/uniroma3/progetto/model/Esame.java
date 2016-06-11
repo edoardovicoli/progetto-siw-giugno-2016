@@ -21,10 +21,14 @@ public class Esame {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private TipologiaEsame tipologiaEsame;
 	
+	@Column(nullable = false)
+	private String risultato;
+	
 	public Esame() {}
 	
 	public Esame(String nome) {
 		this.nome = nome;
+		this.risultato = "";
 	}
 
 	public Long getId() {
@@ -51,6 +55,14 @@ public class Esame {
 		this.tipologiaEsame = tipologiaEsame;
 	}
 	
+	public String getRisultato() {
+		return risultato;
+	}
+
+	public void setRisultato(String risultato) {
+		this.risultato = risultato;
+	}
+
 	@Override
 	public String toString() {
 		return "Esame [id=" + id + ", nome=" + nome + "]";

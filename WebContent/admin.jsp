@@ -55,23 +55,33 @@
 			<div align="center">
 				<h2>Laboratorio Analisi Cliniche</h2>
 			</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<div align="center">
 				<h3>Area Riservata Direttore Laboratorio</h3>
 			</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<div align="center">
 				<h3><a href="newTipologiaEsame.jsp">Inserisci Tipologia Esame</a></h3>
 			</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<div align="center">
 				<h3><a href="newPaziente.jsp">Inserisci nuovo Paziente</a></h3>
 			</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<div align="center">
 				<h3><a href="newPrenotazioneEsame.jsp">Prenota nuovo Esame</a></h3>
 			</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<div align="center">
 				<h3><a href="newMedico.jsp">Inserisci nuovo Medico</a></h3>
 			</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<div align="center">
 				<h3><a href="esamiMedico.jsp">Controlla Esami di un Medico</a></h3>
+			</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
+			<div align="center">
+				<h3><a href="elencoEsamiInCorso.jsp">Inserisci risultati Esame</a></h3>
 			</div>
 		</f:view>
 	</body>

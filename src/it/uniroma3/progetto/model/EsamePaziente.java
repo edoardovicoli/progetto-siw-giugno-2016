@@ -23,14 +23,17 @@ public class EsamePaziente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(nullable = false)
+	private String codice;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPrenotazione;
 	
 	@Temporal(TemporalType.DATE)
 	private Date dataSvolgimento;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
-	private List<TipologiaEsame> tipologieEsame;
+	@OneToOne
+	private TipologiaEsame tipologiaEsame;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	private List<Esame> esami;
@@ -43,10 +46,10 @@ public class EsamePaziente {
 	
 	public EsamePaziente() {}
 
-	public EsamePaziente(Date dataSvolgimento) {
+	public EsamePaziente(String codice, Date dataSvolgimento) {
 		super();
+		this.codice = codice;
 		this.dataSvolgimento = dataSvolgimento;
-		this.tipologieEsame = new ArrayList<TipologiaEsame>();
 		this.esami = new ArrayList<Esame>();
 	}
 
@@ -56,6 +59,14 @@ public class EsamePaziente {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getCodice() {
+		return codice;
+	}
+
+	public void setCodice(String codice) {
+		this.codice = codice;
 	}
 
 	public Date getDataPrenotazione() {
@@ -72,14 +83,6 @@ public class EsamePaziente {
 
 	public void setDataSvolgimento(Date dataSvolgimento) {
 		this.dataSvolgimento = dataSvolgimento;
-	}
-	
-	public List<TipologiaEsame> getTipologieEsame() {
-		return tipologieEsame;
-	}
-
-	public void setTipologieEsame(List<TipologiaEsame> tipologieEsame) {
-		this.tipologieEsame = tipologieEsame;
 	}
 
 	public List<Esame> getEsami() {
@@ -106,4 +109,11 @@ public class EsamePaziente {
 		this.medico = medico;
 	}
 
+	public TipologiaEsame getTipologiaEsame() {
+		return tipologiaEsame;
+	}
+
+	public void setTipologiaEsame(TipologiaEsame tipologiaEsame) {
+		this.tipologiaEsame = tipologiaEsame;
+	}	
 }

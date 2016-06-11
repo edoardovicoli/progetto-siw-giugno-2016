@@ -22,7 +22,6 @@ public class EsameController {
 
 	public Esame createEsame(String nome) {
 		this.esame = esameFacade.createEsame(this.nome);
-		//FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("esame", this.esame);
 		
 		// riazzero campi
 		this.nome = "";

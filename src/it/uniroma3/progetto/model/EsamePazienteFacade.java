@@ -22,28 +22,13 @@ public class EsamePazienteFacade {
 			System.out.println("EM NULL");
 		}
 		try {
-			em.merge(esamePaziente);
+			em.persist(esamePaziente);
 			System.out.println("EsamePazienteFacade: ESAMEPAZIENTE CREATA");
 		} catch(Exception e) {
 			System.out.println("ERRORE CREATEESAMEPAZIENTE");
 			System.out.println(e);
 		}
 		return esamePaziente;
-	}
-	
-	public List<TipologiaEsame> addTipologiaEsame(EsamePaziente esamePaziente, TipologiaEsame tipologiaEsame) {
-		List<TipologiaEsame> tipologieEsame = esamePaziente.getTipologieEsame();
-		System.out.println("LISTA PRESA");
-		if (tipologieEsame==null) {
-			System.out.println("LISTA NULL");
-		} else {
-			System.out.println("ELEMENTI LISTA: " + tipologieEsame.size());
-		}
-		tipologieEsame.add(tipologiaEsame);
-		System.out.println("TIPOLOGIAESAME AGGIUNTA ALLA LISTA PRESA");
-		esamePaziente.setTipologieEsame(tipologieEsame);
-		System.out.println("LISTA SETTATA");
-		return tipologieEsame;	
 	}
 	
 	public List<Esame> addEsame(EsamePaziente esamePaziente, Esame esame) {
@@ -63,9 +48,7 @@ public class EsamePazienteFacade {
 	
 	public List<TipologiaEsame> findAllTipologieEsame() {
 		Query q = em.createQuery("SELECT t FROM TipologiaEsame t");
-		System.out.println("*********PRENDOTIP**********");
 		List<TipologiaEsame> tipologieEsame = q.getResultList();
-		System.out.println("DIMENSIONE LISTA *****" + tipologieEsame.size());
 		return tipologieEsame;
 	}
 	
@@ -75,6 +58,14 @@ public class EsamePazienteFacade {
 		List<Esame> esami = q.getResultList();
 		System.out.println("DIMENSIONE LISTA *****" + esami.size());
 		return esami;
+	}
+	
+	public List<EsamePaziente> findAllEsamiPaziente() {
+		Query q = em.createQuery("SELECT e FROM EsamePaziente e");
+		System.out.println("*********PRENDOESPAZIENTE**********");
+		List<EsamePaziente> esamiPaziente = q.getResultList();
+		System.out.println("DIMENSIONE LISTA *****" + esamiPaziente.size());
+		return esamiPaziente;
 	}
 	
 	public List<EsamePaziente> findAllEsamiByMedico(Long idMedico) {
@@ -92,12 +83,23 @@ public class EsamePazienteFacade {
 		return esamiPaziente;
 	}
 	
+	public List<EsamePaziente> findAllEsamiByPazienteCF(String codiceFiscale) {
+		Query q = em.createQuery("SELECT OBJECT(e) FROM EsamePaziente AS e WHERE e.paziente.cf=?1");
+		q.setParameter(1, codiceFiscale);
+		List<EsamePaziente> esamiPaziente = q.getResultList();
+		return esamiPaziente;
+	}
+	
 	public void setMedicoCartella(EsamePaziente esamePaziente, Medico medico) {
 		esamePaziente.setMedico(medico);
 	}
 	
 	public void setPazienteCartella(EsamePaziente esamePaziente, Paziente paziente) {
 		esamePaziente.setPaziente(paziente);
+	}
+	
+	public void setTipologiaEsameCartella(EsamePaziente esamePaziente, TipologiaEsame tipologiaEsame) {
+		esamePaziente.setTipologiaEsame(tipologiaEsame);
 	}
 	
 	public void updateEsamePaziente(EsamePaziente esamePaziente) {

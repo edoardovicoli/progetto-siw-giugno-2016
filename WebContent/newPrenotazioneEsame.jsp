@@ -57,6 +57,11 @@
 					<h1>Laboratorio Analisi Cliniche - Prenotazione Esame</h1>
 				</div>
 				<div align="center">
+					<label for="inputCodice">Codice Cartella: </label>
+					<h:inputText styleClass="form-control" value="#{esamePazienteController.codice}" required="true" requiredMessage="Codice Obbligatorio!" id="codice" style="width:250px"/>
+					<h:message for="codice"/>
+				</div>
+				<div align="center">
 					Medico: <h:selectOneMenu value="#{esamePazienteController.medico}">
 								<f:selectItems value="#{esamePazienteController.mediciSelezionabili}"/>
 							</h:selectOneMenu>

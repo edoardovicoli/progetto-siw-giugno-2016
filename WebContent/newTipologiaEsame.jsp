@@ -93,29 +93,7 @@
 					<h:commandButton value="Submit" action="#{tipologiaEsameController.createTipologiaEsame}" styleClass="btn btn-lg btn-success"/>
 				</div>
 			</h:form>
-			<hr>
-			
-			<div align="center">
-				<h:dataTable value="#{tipologiaEsameController.esami}" var="esame" styleClass="esameTable" headerClass="esameTableHeader" rowClasses="esameTableOddRow,esameTableEvenRow" border="1">
-   					<h:column>    				
-      					<f:facet name="header"><h:outputText value="CodTipologia"/></f:facet>    				
-      					<h:outputText value="#{tipologiaEsameController.codice}"/>
-   					</h:column>
-   					<h:column>    				
-      					<f:facet name="header"><h:outputText value="NomeTipologia"/></f:facet>    				
-      					<h:outputText value="#{tipologiaEsameController.nome}"/>
-   					</h:column>
-   					<h:column>    				
-      					<f:facet name="header"><h:outputText value="CostoTipologia"/></f:facet>    				
-      					<h:outputText value="#{tipologiaEsameController.costo}"/>
-   					</h:column>
-   					<h:column>
-      					<f:facet name="header"><h:outputText value="Esame"/></f:facet>
-      					<h:outputText value="#{esame.nome}"/>
-   					</h:column>
-   				</h:dataTable>
-			</div>
-			<p></p>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<div align="center">
 				<h:dataTable value="#{tipologiaEsameController.prerequisitiEsame}" var="prerequisitoEsame" styleClass="prerequisitoTable" headerClass="prerequisitoTableHeader" rowClasses="prerequisitoTableOddRow,prerequisitoTableEvenRow" border="1">
    					<h:column>    				
@@ -133,6 +111,27 @@
    					<h:column>
       					<f:facet name="header"><h:outputText value="Prerequisito"/></f:facet>
       					<h:outputText value="#{prerequisitoEsame.nome}"/>
+   					</h:column>
+   				</h:dataTable>
+			</div>
+			<p></p>
+			<div align="center">
+				<h:dataTable value="#{tipologiaEsameController.esami}" var="esame" styleClass="esameTable" headerClass="esameTableHeader" rowClasses="esameTableOddRow,esameTableEvenRow" border="1">
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="CodTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.codice}"/>
+   					</h:column>
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="NomeTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.nome}"/>
+   					</h:column>
+   					<h:column>    				
+      					<f:facet name="header"><h:outputText value="CostoTipologia"/></f:facet>    				
+      					<h:outputText value="#{tipologiaEsameController.costo}"/>
+   					</h:column>
+   					<h:column>
+      					<f:facet name="header"><h:outputText value="Esame"/></f:facet>
+      					<h:outputText value="#{esame.nome}"/>
    					</h:column>
    				</h:dataTable>
 			</div>

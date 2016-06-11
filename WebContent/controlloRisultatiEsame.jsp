@@ -5,8 +5,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Login</title>
-
+		<title>Risultati Esame</title>
+		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
@@ -17,7 +17,6 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<f:view>
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class = "container">
 				<div class="navbar-header">
@@ -37,7 +36,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Servizi<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="tipologieEsame.jsp">Esami offerti</a></li>
+								<li><a href="tipologieEsame.jsp">Tipologie Esame offerte</a></li>
 								<li><a href="#">Another Action</a></li>
 								<li><a href="#">Something else here</a></li>
 								<li class="divider"></li>
@@ -51,29 +50,27 @@
 				</div>
 			</div>
 		</div>
+		<div align="center">
+			<h2>Risultati Esame selezionato</h2>
+		</div>
+		<f:view>
 			<h:form>
-			<div align="center">
-				<h2>Login Area Riservata</h2>
-			</div>
-			<div align="center">
-				<label for="inputUsername">Username:</label>
-				<h:inputText styleClass="form-control" value="#{loginController.username}" required="true" requiredMessage="Username obbligatorio!" id="id"/>
-				<h:message for="id"/>
-			</div>
-			<div align="center">
-				<label for="inputPassword">Password:</label>
-				<h:inputSecret styleClass="form-control" value="#{loginController.password}" required="true" requiredMessage="Password obbligatorio!" id="password"/>
-				<h:message for="password"/>
-			</div>
-			<div></div>
-			<hr>
-			<div></div>
-			<div align="center">
-				<h:commandButton value="Invia" action="#{loginController.validate}" styleClass="btn btn-lg btn-primary btn-block"/>
-			</div>
-			<div align="center">
-				<h:outputText value="#{loginController.messaggioErrore}"></h:outputText>
-			</div>
+				<div align="center">
+					<h:dataTable value="#{consultaRisultatiController.esamiConRisultato}" var="esame" styleClass="esameTable" headerClass="esameHeader" rowClasses="esameOddRow,esameEvenRow" border="1" width="30%">
+   						<h:column> 
+   							<f:facet name="header"><h:outputText value="Tipologia"/></f:facet>   					  				
+      						<h:outputText value="#{consultaRisultatiController.esamePazienteSelezionato.tipologiaEsame.nome}"/>
+   						</h:column>
+   						<h:column>			
+      						<f:facet name="header"><h:outputText value="Esame"/></f:facet>   				
+      						<h:outputText value="#{esame.nome}"/>
+   						</h:column>
+   						<h:column>			
+      						<f:facet name="header"><h:outputText value="Risultato"/></f:facet>   				
+      						<h:outputText value="#{esame.risultato}"/>
+   						</h:column>
+   					</h:dataTable>
+				</div>
 			</h:form>
 		</f:view>
 	</body>

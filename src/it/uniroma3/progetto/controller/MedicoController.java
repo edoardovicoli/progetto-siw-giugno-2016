@@ -30,6 +30,8 @@ public class MedicoController {
 	private String medicoSelezionato;
 	private List<String> mediciSelezionabili;
 	
+	private String listaEsamiSeguitiDalDr;
+	
 	@EJB
 	private MedicoFacade medicoFacade;
 	
@@ -63,14 +65,21 @@ public class MedicoController {
 			int indiceSpazioBianco = this.medicoSelezionato.indexOf(" ");
 			this.nomeMedicoPerEsami = this.medicoSelezionato.substring(0, indiceSpazioBianco);
 			this.cognomeMedicoPerEsami = this.medicoSelezionato.substring(indiceSpazioBianco+1);
+			System.out.println("NOME MEDICO: " + this.nomeMedicoPerEsami);
+			System.out.println("COGNOME MEDICO: " + this.cognomeMedicoPerEsami);
 		}
 		this.listaEsamiPazientePerEsami = this.esamePazienteFacade.findAllEsamiByMedicoNomeCognome(this.nomeMedicoPerEsami, this.cognomeMedicoPerEsami);
 		if (this.listaEsamiPazientePerEsami.isEmpty()) {
 			System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||");
+			this.listaEsamiSeguitiDalDr = "";
 		} else {
 			for (EsamePaziente ep:listaEsamiPazientePerEsami) {
 				System.out.println("_______________________________________________" + ep.getDataSvolgimento());
 			}
+			this.listaEsamiSeguitiDalDr = "Lista Esami seguiti dal Dr. " + this.nomeMedicoPerEsami + " " + this.cognomeMedicoPerEsami;
+		}
+		for (EsamePaziente ep:listaEsamiPazientePerEsami) {
+			System.out.println("ESAME NELLA LISTA DATA: " + ep.getDataSvolgimento());
 		}
 		this.nomeMedicoPerEsami = "";
 		this.cognomeMedicoPerEsami = "";
@@ -196,6 +205,14 @@ public class MedicoController {
 
 	public void setMediciSelezionabili(List<String> mediciSelezionabili) {
 		this.mediciSelezionabili = mediciSelezionabili;
+	}
+
+	public String getListaEsamiSeguitiDalDr() {
+		return listaEsamiSeguitiDalDr;
+	}
+
+	public void setListaEsamiSeguitiDalDr(String listaEsamiSeguitiDalDr) {
+		this.listaEsamiSeguitiDalDr = listaEsamiSeguitiDalDr;
 	}
 	
 }

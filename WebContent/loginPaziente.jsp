@@ -5,8 +5,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Login</title>
-
+		<title>Login Paziente</title>
+		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
@@ -17,7 +17,6 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<f:view>
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class = "container">
 				<div class="navbar-header">
@@ -51,28 +50,23 @@
 				</div>
 			</div>
 		</div>
+		<f:view>
 			<h:form>
 			<div align="center">
-				<h2>Login Area Riservata</h2>
+				<h2>Login Paziente</h2>
+				<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
+				<h4>Inserire il proprio Codice Fiscale</h4>
 			</div>
 			<div align="center">
-				<label for="inputUsername">Username:</label>
-				<h:inputText styleClass="form-control" value="#{loginController.username}" required="true" requiredMessage="Username obbligatorio!" id="id"/>
-				<h:message for="id"/>
+				<label for="inputCF">Codice Fiscale:</label>
+				<h:inputText styleClass="form-control" value="#{loginPazienteController.codiceFiscale}" required="true" requiredMessage="CF obbligatorio!" id="cf"/>
+				<h:message for="cf"/>
 			</div>
 			<div align="center">
-				<label for="inputPassword">Password:</label>
-				<h:inputSecret styleClass="form-control" value="#{loginController.password}" required="true" requiredMessage="Password obbligatorio!" id="password"/>
-				<h:message for="password"/>
-			</div>
-			<div></div>
-			<hr>
-			<div></div>
-			<div align="center">
-				<h:commandButton value="Invia" action="#{loginController.validate}" styleClass="btn btn-lg btn-primary btn-block"/>
+				<h:commandButton value="Invia" action="#{loginPazienteController.validate}" styleClass="btn btn-lg btn-primary btn-block"/>
 			</div>
 			<div align="center">
-				<h:outputText value="#{loginController.messaggioErrore}"></h:outputText>
+				<h:outputText value="#{loginPazienteController.messaggioErrore}"></h:outputText>
 			</div>
 			</h:form>
 		</f:view>

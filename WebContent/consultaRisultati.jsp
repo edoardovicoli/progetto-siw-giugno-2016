@@ -5,8 +5,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Login</title>
-
+		<title>Risultati Esami</title>
+		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="grafica/bootstrap.min.css">
 
@@ -17,7 +17,6 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<f:view>
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class = "container">
 				<div class="navbar-header">
@@ -51,28 +50,45 @@
 				</div>
 			</div>
 		</div>
+		<f:view>
+			<div align="center">
+			<h2>Elenco Esami per: <h:outputText value="#{consultaRisultatiController.codiceFiscale}"/></h2>
+		</div>
+			<hr style="width: 50%; color:black; height: 1px; background-color:black;"/>
 			<h:form>
-			<div align="center">
-				<h2>Login Area Riservata</h2>
-			</div>
-			<div align="center">
-				<label for="inputUsername">Username:</label>
-				<h:inputText styleClass="form-control" value="#{loginController.username}" required="true" requiredMessage="Username obbligatorio!" id="id"/>
-				<h:message for="id"/>
-			</div>
-			<div align="center">
-				<label for="inputPassword">Password:</label>
-				<h:inputSecret styleClass="form-control" value="#{loginController.password}" required="true" requiredMessage="Password obbligatorio!" id="password"/>
-				<h:message for="password"/>
-			</div>
-			<div></div>
-			<hr>
-			<div></div>
-			<div align="center">
-				<h:commandButton value="Invia" action="#{loginController.validate}" styleClass="btn btn-lg btn-primary btn-block"/>
-			</div>
-			<div align="center">
-				<h:outputText value="#{loginController.messaggioErrore}"></h:outputText>
+				<div align="center">
+				<h:dataTable value="#{consultaRisultatiController.esamiDelPazienteModel}" var="esamePaziente" styleClass="esamePazienteTable" headerClass="esamePazienteTableHeader" rowClasses="esamePazienteTableOddRow,esamePazienteTableEvenRow" border="1" width="45%">
+   					<h:column> 
+   						<f:facet name="header"><h:outputText value="Codice"/></f:facet>   					  				
+      					<h:outputText value="#{esamePaziente.codice}"/>
+   					</h:column>
+   					<h:column> 
+   						<f:facet name="header"><h:outputText value="Data"/></f:facet>   					  				
+      					<h:outputText value="#{esamePaziente.dataSvolgimento}"/>
+   					</h:column>
+   					<h:column>			
+      					<f:facet name="header"><h:outputText value="CF Paziente"/></f:facet>   				
+      					<h:outputText value="#{esamePaziente.paziente.cf}"/>
+   					</h:column>
+   					<h:column> 				
+      					<f:facet name="header"><h:outputText value="Paziente"/></f:facet>   				
+      					<h:outputText value="#{esamePaziente.paziente.nome} #{esamePaziente.paziente.cognome}"/>
+   					</h:column>
+   					<h:column> 				
+      					<f:facet name="header"><h:outputText value="Tipologia"/></f:facet>    				
+      					<h:outputText value="#{esamePaziente.tipologiaEsame.nome}"/>
+   					</h:column>
+   					<h:column>
+      					<f:facet name="header"><h:outputText value="Medico"/></f:facet> 
+      					<h:outputText value="#{esamePaziente.medico.nome} #{esamePaziente.medico.cognome}" />
+   					</h:column>
+   					<h:column>
+      					<f:facet name="header"><h:outputText value=""/></f:facet>
+      					<div align="center">
+							<h:commandButton value="Controlla" action="#{consultaRisultatiController.controlloRisultati}" styleClass="btn btn-lg btn-success"/>
+						</div>
+   					</h:column>
+   				</h:dataTable>
 			</div>
 			</h:form>
 		</f:view>

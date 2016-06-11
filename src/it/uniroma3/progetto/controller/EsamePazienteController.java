@@ -19,6 +19,7 @@ import it.uniroma3.progetto.model.TipologiaEsameFacade;
 
 @ManagedBean
 public class EsamePazienteController {
+	private String codice;
 	private Date dataPrenotazione;
 	private String medico;
 	private String paziente;
@@ -48,19 +49,10 @@ public class EsamePazienteController {
 	private EsamePazienteFacade esamePazienteFacade;
 	
 	public String createEsamePaziente() {
-//		System.out.println(this.medico);
-//		System.out.println(this.paziente);
-//		if (this.esamiSelezionati.isEmpty()) {
-//			System.out.println(".......................................... LISTA ESAMI VUOTA");
-//		} else {
-//			for (String s:esamiSelezionati) {
-//				System.out.println("9999999999999999999999999" + s);
-//			}
-//		}
-		this.esamePazienteCartella = new EsamePaziente(this.dataSvolgimentoCartella);
+		this.esamePazienteCartella = new EsamePaziente(this.codice, this.dataSvolgimentoCartella);
 		
 		this.tipologiaEsameCartella = this.tipologiaEsameFacade.findByName(this.tipologiaEsame);
-		this.esamePazienteFacade.addTipologiaEsame(this.esamePazienteCartella, this.tipologiaEsameCartella);
+		this.esamePazienteFacade.setTipologiaEsameCartella(this.esamePazienteCartella, this.tipologiaEsameCartella);
 		this.tipologiaEsameCartella.setEsamePaziente(this.esamePazienteCartella);
 		
 		for (String esame:esamiSelezionati) {
@@ -89,6 +81,14 @@ public class EsamePazienteController {
 			this.esamiPerTipologia = "Esami per Tipologia:";
 		}
 		return "newPrenotazioneEsame";
+	}
+	
+	public String getCodice() {
+		return codice;
+	}
+
+	public void setCodice(String codice) {
+		this.codice = codice;
 	}
 
 	public Date getDataPrenotazione() {

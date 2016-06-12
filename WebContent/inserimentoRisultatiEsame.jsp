@@ -32,7 +32,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="main.jsp">Home</a></li>
 						<li><a href="about.jsp">About</a></li>
-						<li><a href="loginAdmin.jsp">Area Riservata</a></li>
+						<li><a href="admin.jsp">Menù Area Riservata</a></li>
 					</ul>
 				</div>
 			</div>

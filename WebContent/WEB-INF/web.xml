@@ -2,6 +2,38 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>progetto-siw-giugno-2016</display-name>
   <filter>
+    <filter-name>esamiincorso-filter</filter-name>
+    <filter-class>it.uniroma3.progetto.filter.ElencoEsamiInCorsoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>esamiincorso-filter</filter-name>
+    <url-pattern>/faces/elencoEsamiInCorso.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>esamimedico-filter</filter-name>
+    <filter-class>it.uniroma3.progetto.filter.EsamiMedicoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>esamimedico-filter</filter-name>
+    <url-pattern>/faces/esamiMedico.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>medico-filter</filter-name>
+    <filter-class>it.uniroma3.progetto.filter.NewMedicoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>medico-filter</filter-name>
+    <url-pattern>/faces/newMedico.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>prenotazione-filter</filter-name>
+    <filter-class>it.uniroma3.progetto.filter.NewPrenotazioneEsameFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>prenotazione-filter</filter-name>
+    <url-pattern>/faces/newPrenotazioneEsame.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
     <filter-name>paziente-filter</filter-name>
     <filter-class>it.uniroma3.progetto.filter.NewPazienteFilter</filter-class>
   </filter>

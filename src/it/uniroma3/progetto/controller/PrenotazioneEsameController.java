@@ -18,24 +18,12 @@ public class PrenotazioneEsameController {
 	private TipologiaEsameFacade tipologiaEsameFacade;
 	
 	public PrenotazioneEsameController() {
-		System.out.println("*******COSTRUTTORE");
 		if (this.tipologiaEsameFacade==null) {
 			System.out.println("NULLLLLL");
 		}
-//		TipologiaEsame t = this.tipologiaEsameFacade.findByName("sangue");
-//		System.out.println(t.getNome() + t.getCodice());
-//		this.tipologieEsamePrenotate = new ArrayList<String>();
-//		List<TipologiaEsame> ls = this.tipologiaEsameFacade.findAll();
-//		this.tipologieEsameSelezionabili = new ArrayList<String>();
-//		for(TipologiaEsame e:ls) {
-//			System.out.println(e.getNome());
-//			this.tipologieEsameSelezionabili.add(e.getNome());
-//		}
-		//this.nome = "Ciao";
 	}
 	
 	public String register() {
-		
 		return "newPrenotazioneEsame";
 	}
 
@@ -62,16 +50,6 @@ public class PrenotazioneEsameController {
 	public void setTipologieEsameSelezionabili(List<String> tipologieEsameSelezionabili) {
 		this.tipologieEsameSelezionabili = tipologieEsameSelezionabili;
 	}
-
-//	public String getNome() {
-//		List<TipologiaEsame> ls = this.tipologiaEsameFacade.findAll();
-//		this.tipologieEsameSelezionabili = new ArrayList<String>();
-//		for(TipologiaEsame e:ls) {
-//			System.out.println(e.getNome());
-//			this.tipologieEsameSelezionabili.add(e.getNome());
-//		}
-//		//return nome;
-//	}
 
 	public void setNome(String nome) {
 		//this.nome = nome;

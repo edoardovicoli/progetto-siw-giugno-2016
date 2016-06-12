@@ -72,15 +72,15 @@
 				<c:forEach var="esamePaziente" items="#{medicoController.listaEsamiPazientePerEsami}">
 					<div align="center">
 						<h:outputText value="#{esamePaziente.codice}"/>
-		     			<h:outputText value=" "/>
+		     			<h:outputText value="   "/>
 		     			<h:outputText value="#{esamePaziente.paziente.nome}"/>
-		     			<h:outputText value=" "/>
+		     			<h:outputText value="   "/>
 		     			<h:outputText value="#{esamePaziente.paziente.cognome}"/>
-		     			<h:outputText value=" "/>
+		     			<h:outputText value="   "/>
 		     			<h:outputText value="#{esamePaziente.dataSvolgimento}"/>
-		     			<h:outputText value=" "/>
+		     			<h:outputText value="   "/>
 		     			<h:outputText value="#{esamePaziente.tipologiaEsame.nome}"/>
-		     			<h:outputText value=" "/>
+		     			<h:outputText value="   "/>
 					</div>
 				</c:forEach>
 			</h:form>

@@ -9,7 +9,7 @@ public class LoginController {
 	private String messaggioErrore;
 	
 	public String validate() {
-		if (username.equals("admin") && password.equals("psw")) {
+		if (username.equals("admin") && password.equals("admin")) {
 			System.out.println("Login ok");
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);

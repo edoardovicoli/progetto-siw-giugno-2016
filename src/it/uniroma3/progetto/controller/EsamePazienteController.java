@@ -59,6 +59,10 @@ public class EsamePazienteController {
 			Esame esameCartella = new Esame(esame);
 			this.esamePazienteFacade.addEsame(this.esamePazienteCartella, esameCartella);
 		}
+		
+		this.dataPrenotazione = new Date();
+		this.esamePazienteCartella.setDataPrenotazione(this.dataPrenotazione);
+		
 		this.medicoCartella = this.medicoFacade.findByNomeMedico(this.medico);
 		this.esamePazienteFacade.setMedicoCartella(this.esamePazienteCartella, this.medicoCartella);
 		
@@ -207,6 +211,7 @@ public class EsamePazienteController {
 	}
 
 	public Date getDataSvolgimentoCartella() {
+		dataSvolgimentoCartella = new Date();
 		return dataSvolgimentoCartella;
 	}
 

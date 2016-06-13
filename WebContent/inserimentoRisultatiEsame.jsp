@@ -45,7 +45,7 @@
 		<f:view>
 			<h:form>
 				<div align="center">
-					<h:dataTable value="#{elencoEsamiInCorsoController.esamePazienteSelezionato}" var="esamePaziente" styleClass="esamePazienteTable" headerClass="esamePazienteTableHeader" rowClasses="esamePazienteTableOddRow,esamePazienteTableEvenRow" border="1" width="30%">
+					<h:dataTable value="#{elencoEsamiInCorsoController.esamePazienteSelezionato}" var="esamePaziente" styleClass="esamePazienteTable" headerClass="esamePazienteTableHeader" rowClasses="esamePazienteTableOddRow,esamePazienteTableEvenRow" border="1" width="50%">
    						<h:column> 
    							<f:facet name="header"><h:outputText value="Codice"/></f:facet>   					  				
       						<h:outputText value="#{esamePaziente.codice}"/>

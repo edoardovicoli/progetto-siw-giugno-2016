@@ -1,1 +1,72 @@
+Progetto: ClinicaACME, progetto-siw-giugno-2016.
+progetto-siw-giugno-2016 rappresenta la realizzazione di un sistema informativo su Web per la prenotazione di esami medici di una piccola clinica (immaginaria), ClinicaACME.
+La realizzazione è di tipo AVANZATA, secondo le specifiche per il progetto AVANZATO per l'appello di esame di Giugno 2016. In particolare sono state implementate le seguenti tecnologie: JPA (Hibernate), Bootstrap, JEE e JSF. È presente il codice per tutto lo strato della logica applicativa ed è stato implementato lo strato di presentazione relativo a TUTTI i casi d'uso richiesti, i quali sono stati rielaborati, modificati e, infine, ampliati.
 
+Descrizione testuale per i casi d'uso di: progetto-siw-giugno-2016.
+
+- Caso d'uso UC1: consulta offerta - Il seguente caso d'uso è stato ampliato e modificato.
+  Attore primario: utente non registrato.
+  
+  Scenario principale di successo: 
+  1. L'utente consulta l'elenco delle tipologie di esame.
+  2. L'utente sceglie una tipologia di esame.
+  3. L'utente richiede la lista di esami disponibili per la tipologia scelta.
+  4. Il sistema mostra gli esami disponibili per la tipologia di esame scelta dall'utente.
+  5. L'utente richiede dettagli (costo, descrizione) per la tipologia scelta.
+  6. Il sistema mostra i dettagli della tipologia di esame scelta dall'utente.
+  7. L'utente ripete i passi precedenti un numero indefinito di volte.
+  
+- Caso d'uso UC2: crea esame (EsamePaziente) (prenotazione) - Il seguente caso d'uso è stato ampliato e modificato.
+  Attore primario: amministrazione.
+  
+  Scenario principale di successo: 
+  1. L'ammistrazione crea un esame (EsamePaziente).
+  2. L'amministrazione imposta un codice per l'EsamePaziente creato.
+  3. L'amministrazione imposta una data di svolgimento per l'EsamePaziente creato.
+  4. L'amministrazione imposta una tipologia di esame all'esame creato.
+  5. L'amministrazione imposta una serie di esami relativi alla tipologia scelta, per l'EsamePaziente creato.
+  6. L'amministrazione associa un paziente all'esame creato.
+  7. Il sistema registra l'esame (impostando automaticamente la data di prenotazione).
+  Precondizioni: l'amministratore è identificato e autenticato
+  
+  Nota: nello svolgimento del progetto, in particolare durante la realizzazione di questo caso d'uso, si è effettuata la creazione di un nuovo 'EsamePaziente', ovvero di una specie di Cartella Clinica. Gli attributi di 'EsamePaziente' sono elencati nella classe corrispondente.
+  
+- Caso d'uso UC3: consulta risultati proprio esame.
+  Attore primario: paziente.
+
+  Scenario principale di successo:
+  1. Il paziente consulta l'elenco dei propri esami.
+  2. Il sistema mostra al paziente l'elenco dei suoi esami.
+  3. Il paziente chiede il dettaglio di un esame.
+  4. Il sistema mostra il dettaglio dell'esame.
+  5. Il paziente ripete i passi precedenti finché necessario.
+  Precondizioni: il paziente è identificato e autenticato.
+  
+- Caso d'uso UC4: inserimento tipologia di esame - Il seguente caso d'uso è stato ampliato e modificato.
+  Attore primario: amministrazione.
+  
+  Scenario principale di successo:
+  1. L'amministratore inserisce una nuova tipologia di esame specificandone i dettagli.
+  2. L'amministratore inserisce un nuovo esame per la tipologia specificata.
+  3. L'amministratore inserisce un prerequisito per l'esame appena inserito.
+  4. Il sistema registra la tipologia di esame, l'esame associato e il prerequisito.
+  5. I punti precedenti vengono ripetuti fino a che necessario.
+  Precondizioni: l'amministratore è identificato e autenticato.
+  
+- Caso d'uso UC5: esami effettuati da un medico - Il seguente caso d'uso è stato ampliato e modificato.
+  Attore primario: amministrazione.
+
+  Scenario principale di successo:
+  1. L’amministratore fornisce o seleziona il nome e il cognome di un medico.
+  2. Il sistema mostra all’amministratore tutti gli esami effettuati dal medico con i relativi dettagli.
+  Precondizioni: l’amministratore è identificato e autenticato.
+
+- Caso d'uso UC6: inserimento risultati esame - Il seguente caso d'uso è stato ampliato e modificato.
+  Attore primario: amministrazione.
+
+  Scenario principale di successo:
+  1. Il sistema mostra tutti gli esami in corso.
+  2. L'amministratore sceglie un esame per il quale inserire i risultati.
+  3. Il sistema mostra un riepilogo per l'esame scelto e una tabella di inserimento per i risultati.
+  4. L'amministratore inserisce i risultati.
+  Precondizioni: l'amministratore è identificato e autenticato.

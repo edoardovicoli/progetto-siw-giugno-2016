@@ -2,6 +2,8 @@ Progetto: ClinicaACME, progetto-siw-giugno-2016.
 progetto-siw-giugno-2016 rappresenta la realizzazione di un sistema informativo su Web per la prenotazione di esami medici di una piccola clinica (immaginaria), ClinicaACME.
 La realizzazione è di tipo AVANZATA, secondo le specifiche per il progetto AVANZATO per l'appello di esame di Giugno 2016. In particolare sono state implementate le seguenti tecnologie: JPA (Hibernate), Bootstrap, JEE e JSF. È presente il codice per tutto lo strato della logica applicativa ed è stato implementato lo strato di presentazione relativo a TUTTI i casi d'uso richiesti, i quali sono stati rielaborati, modificati e, infine, ampliati.
 
+- CREDENZIALI DI ACCESSO ALLA SEZIONE 'AMMINISTRATORE' DEL PROGETTO: username: 'admin', password: 'admin'. (senza gli apici)
+
 Descrizione testuale per i casi d'uso di: progetto-siw-giugno-2016.
 
 - Caso d'uso UC1: consulta offerta - Il seguente caso d'uso è stato ampliato e modificato.
